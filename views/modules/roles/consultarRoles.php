@@ -36,13 +36,11 @@
                 </div>
             </nav>
 
-            <table class="table table-striped ">
+            <table class="table table-striped table-bordered">
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col">ID</th>
                         <th scope="col">Rol</th>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -50,7 +48,7 @@
 
                         $datos = $rolesControlador -> listarRolesControlador();
 
-                        foreach ($datos as $key => $value) {
+                        foreach ($datos as $value) {
                             echo "<tr>";
                             echo "<td>" . $value['roles_id'] . "</td>";
                             echo  "<td>" . $value['roles_nombre'] . "</td>";

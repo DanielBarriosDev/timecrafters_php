@@ -39,14 +39,14 @@
                         <div class="mb-2 d-flex flex-column align-items-start">
                             <input type="hidden" name="id" value="<?php echo $lista['usuarios_id'] ?>">
                             <label for="nombres" class="form-label">Nombres:</label>
-                            <input type="text" class="form-control nombres" name="nombres" id="nombres" value="<?php echo $lista['usuarios_nombres'] . " " . $lista['usuarios_apellidos'] ?>" disabled>
+                            <input type="text" class="form-control nombres" name="nombres" id="nombres" value="<?php echo $lista['usuarios_nombres'] ?>" required>
                         </div>
                     </div>
 
                     <div class="col-md-6">
                         <div class="mb-2 d-flex flex-column align-items-start">
                             <label for="apellidos" class="form-label">Apellidos:</label>
-                            <!-- <input type="text" class="form-control" name="apellidos" id="apellidos" value="<?php echo $lista['usuarios_apellidos'] ?>" required> -->
+                            <input type="text" class="form-control" name="apellidos" id="apellidos" value="<?php echo $lista['usuarios_apellidos'] ?>" required>
                         </div>
                     </div>
 
@@ -54,9 +54,6 @@
                         <div class="mb-2 d-flex flex-column align-items-start">
                             <label for="tipoIdentificacion" class="form-label">Tipo de Documento:</label>
                             <select class="form-select" name="tipoIdentificacion" id="tipoIdentificacion" required>
-                        
-
-
                                 <option value="TI">Tarjeta de Identidad</option>
                                 <option value="CC">Cedula de Ciudadania</option>
                                 <option value="PTT">Cedula de Extranjería</option>
@@ -86,25 +83,11 @@
                         </div>
 
                         <div class="mb-2 d-flex flex-column align-items-start">
-                            <label for="roles" class="form-label">Rol:</label>
-                            <select class="form-select" name="roles" id="roles" required>
-
-                                <?php
-
-                                    $rolesControlador = new RolesControlador();
-
-                                    $datos = $rolesControlador -> listarRolesControlador();
-
-                                    foreach ($datos as $roles)  {
-                                        echo "<option value='" . $roles['roles_id'] . "'>" . $roles['roles_nombre'] . "</option>";
-                                    }
-
-                                ?>
-
-
-                                <!-- <option value="1">Girardot</option>
+                            <label for="ciudades" class="form-label">Ciudad:</label>
+                            <select class="form-select" name="ciudades" id="ciudades" required>
+                                <option value="1">Girardot</option>
                                 <option value="2">Flandes</option>
-                                <option value="3">Ricaurte</option> -->
+                                <option value="3">Ricaurte</option>
                             </select>
                         </div>
                     </div>

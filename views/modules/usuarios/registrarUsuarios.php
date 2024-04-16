@@ -19,25 +19,25 @@
 
     <div class="card">
         <div class="card-body">
-            <form method="post" class="mt-4">
+            <form method="post" class="mt-4" id="formularioUsuarios">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="mb-2 d-flex flex-column align-items-start">
-                            <label for="nombres" class="form-label">Nombres:</label>
+                            <label for="nombres" class="form-label">Nombres: <span></span></label>
                             <input type="text" class="form-control nombres" name="nombres" id="nombres" placeholder="Nombres" required>
                         </div>
                     </div>
 
                     <div class="col-md-6">
                         <div class="mb-2 d-flex flex-column align-items-start">
-                            <label for="apellidos" class="form-label">Apellidos:</label>
+                            <label for="apellidos" class="form-label">Apellidos: <span></span></label>
                             <input type="text" class="form-control" name="apellidos" id="apellidos" placeholder="Apellidos" required>
                         </div>
                     </div>
 
                     <div class="col-md-6">
                         <div class="mb-2 d-flex flex-column align-items-start">
-                            <label for="tipoIdentificacion" class="form-label">Tipo de Documento:</label>
+                            <label for="tipoIdentificacion" class="form-label">Tipo de Documento: <span></span></label>
                             <select class="form-select" name="tipoIdentificacion" id="tipoIdentificacion" required>
                                 <option value="TI">Tarjeta de Identidad</option>
                                 <option value="CC">Cedula de Ciudadania</option>
@@ -48,27 +48,27 @@
 
                     <div class="col-md-6">
                         <div class="mb-2 d-flex flex-column align-items-start">
-                            <label for="identificacion" class="form-label">Identificación:</label>
+                            <label for="identificacion" class="form-label">Identificación: <span></span></label>
                             <input type="number" class="form-control" name="identificacion" id="identificacion" required>
                         </div>
                     </div>
 
                     <div class="col-md-12">
                         <div class="mb-2 d-flex flex-column align-items-start">
-                            <label for="correo" class="form-label">Correo electronico:</label>
+                            <label for="correo" class="form-label">Correo electronico: <span></span></label>
                             <input type="email" class="form-control" name="correo" id="correo" placeholder="ejemplo@gmail.com" required>
                         </div>
 
                         <div class="mb-2 d-flex flex-column align-items-start">
-                            <label for="estado" class="form-label">Estado:</label>
+                            <label for="estado" class="form-label">Estado: <span></span></label>
                             <select class="form-select" name="estado" id="estado" required>
-                                <option value="Activo">Activo</option>
-                                <option value="Inactivo">Inactivo</option>
+                                <option value="activo">Activo</option>
+                                <option value="deshabilitado">Deshabilitado</option>
                             </select>
                         </div>
 
                         <div class="mb-2 d-flex flex-column align-items-start">
-                            <label for="ciudades" class="form-label">Ciudad:</label>
+                            <label for="ciudades" class="form-label">Ciudad: <span></span></label>
                             <select class="form-select" name="ciudades" id="ciudades" required>
                                 <?php
 

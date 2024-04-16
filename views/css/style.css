@@ -97,10 +97,6 @@ body {
     background-color: var(--bs-teal);
   }
 
-  .navbar button {
-    height: 100%;
-  }
-
 /*------------------------------ Card ------------------------------*/
 
   .card .card-title {

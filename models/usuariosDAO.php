@@ -1,6 +1,11 @@
 <?php
     
-    require_once 'config/conexion.php';
+    if(!file_exists("config/conexion.php")){
+        require_once '../../../config/conexion.php';
+    }
+    else{
+        require_once 'config/conexion.php';
+    }
 
     class UsuariosDAO extends Conexion {
 
@@ -195,12 +200,14 @@
                         $stmt = $conexion -> conectar() -> prepare($sql2);
 
                         $stmt -> bindParam(":id", $id, PDO::PARAM_INT);
+                        $stmt -> execute();
 
-                        if ($stmt -> execute()) {
+                        if ($stmt -> rowCount() > 0) {
+                            return "success";
+
                             $conexion = null;
                             $stmt = null;
 
-                            return "success";
                         } else {
                             return "error";
                         }

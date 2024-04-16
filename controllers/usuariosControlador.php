@@ -147,19 +147,24 @@ class UsuariosControlador{
     ///////////////////////////////////////////
 
     public function eliminarUsuariosControlador($id){
+        
+        $usuariosDao = new UsuariosDAO();
+        $respuesta = $usuariosDao -> eliminarUsuariosModelo($id);
 
-        if (isset($_GET['id'])) {
+        return $respuesta;
 
-            $usuariosDao = new UsuariosDAO();
-            $respuesta = $usuariosDao -> eliminarUsuariosModelo($_GET['id']);
+        // if (isset($_GET['id'])) {
 
 
-            if ($respuesta == "success") {
-                header("location:" . SERVERURL . "usuarios/consultarUsuarios/okdel");
-            } else {
-                header("location:" . SERVERURL . "usuarios/consultarUsuarios/errdel");
-            }
-        }
+
+        //     if ($respuesta == "success") {
+        //         header("location:" . SERVERURL . "usuarios/consultarUsuarios/okdel");
+        //     } else {
+        //         header("location:" . SERVERURL . "usuarios/consultarUsuarios/errdel");
+        //     }
+        // }
+
+        // return $id;
     }
 }
 

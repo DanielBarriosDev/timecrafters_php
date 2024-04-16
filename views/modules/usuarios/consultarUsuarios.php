@@ -8,7 +8,7 @@
     if (isset($_GET['action'])) {
         $action = explode("/", $_GET['action']);
         if (count($action) == 3) {
-            $usuariosControlador -> eliminarUsuariosControlador($action[2]);
+            // $usuariosControlador -> eliminarUsuariosControlador($action[2]);
         }
     }
 
@@ -46,6 +46,7 @@
             <table class="table table-striped ">
                 <thead>
                     <tr>
+                        <th>ID</th>
                         <th>Nombres</th>
                         <th>TI</th>
                         <th>Identificacion</th>
@@ -65,7 +66,7 @@
 
                     foreach ($datos as $value) {
                         echo "<tr>";
-                        // echo "<td  id='fila'>" . $value['usuarios_id'] . "</td>";
+                        echo "<td id='fila'>" . $value['usuarios_id'] . "</td>";
                         echo "<td>" . $value['usuarios_nombres'] . " " . $value['usuarios_apellidos'] . "</td>";
                         echo "<td>" . $value['usuarios_tipo_identificacion'] . "</td>";
                         echo "<td>" . $value['usuarios_identificacion'] . "</td>";

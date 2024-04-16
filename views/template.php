@@ -34,7 +34,7 @@
   <?php
 
     $controlador = new Controlador();
-    $controlador->enlacesPaginasControlador();
+    $controlador -> enlacesPaginasControlador();
 
   ?>
 

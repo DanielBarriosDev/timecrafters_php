@@ -77,8 +77,8 @@
                         <div class="mb-2 d-flex flex-column align-items-start">
                             <label for="estado" class="form-label">Estado:</label>
                             <select class="form-select" name="estado" id="estado" required>
-                                <option value="Activo">Activo</option>
-                                <option value="Inactivo">Inactivo</option>
+                                <option value="activo">Activo</option>
+                                <option value="deshabilitado">Deshabilitado</option>
                             </select>
                         </div>
 

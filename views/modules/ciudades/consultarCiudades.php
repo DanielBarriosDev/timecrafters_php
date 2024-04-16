@@ -34,13 +34,11 @@
                 </div>
             </nav>
 
-            <table class="table table-striped">
+            <table class="table table-striped table-bordered">
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col">ID</th>
                         <th scope="col">Ciudad</th>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
