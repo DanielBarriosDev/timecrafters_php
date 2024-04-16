@@ -1,0 +1,164 @@
+/*------------------------------ BODY ------------------------------*/
+
+body {
+    display: flex;
+  }
+
+  /*------------------------------ NAV ------------------------------*/
+
+  /*-------------------- Sub-listas --------------------*/
+
+  
+  nav .container .sub-listas {
+    display: none;
+    padding-left: 25px;
+  }
+
+  nav .container li:hover>.sub-listas {
+    display: block;
+  }
+
+  nav .container li:hover>.sub-listas {
+    display: block;
+  }
+
+  nav a,
+  nav li {
+    text-decoration: none;
+    list-style: none;
+  }
+
+  nav a {
+    display: block;
+    padding: 10px 0;
+    color: #000;
+    transition: color 0.3s ease;
+
+  }
+
+  a.nav-link {
+    color: #000;
+  }
+
+  nav .sub-listas {
+    display: none;
+  }
+
+  nav li:hover>.sub-listas {
+    display: block;
+  }
+
+  nav ul a:hover {
+    background-color: var(--bg-color-button);
+    color: var(--bg-color-text);
+  }
+
+  /*------------------------------ Card ------------------------------*/
+
+  div.container {
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    margin: 40px auto;
+    max-width: 1200px;
+  }
+
+  form {
+    margin-top: 30px;
+  }
+
+  label {
+    color: #555;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  input,
+  select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+
+  button {
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    transition: background-color 0.3s ease;
+    background-color: var(--bg-color-button);
+    color: #fff;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: var(--bs-teal);
+  }
+
+  .navbar button {
+    height: 100%;
+  }
+
+/*------------------------------ Card ------------------------------*/
+
+  .card .card-title {
+    color: var(--bs-dark);
+  }
+
+  .list-group-item {
+    border: none;
+  }
+
+
+  /*------------------------------ paginacion ------------------------------*/
+
+  .container-pagination {
+    margin-top: 10px;
+  }
+
+
+  /*------------------------------ Calendario ------------------------------*/
+
+  .presentation {
+    background-color: var(--bg-color-button); 
+  }
+
+  .fc-toolbar-title {
+    color: var(--bg-color-button);
+  }
+
+
+  .fc-scrollgrid thead a{
+    color: var(--bs-success-border-subtle);
+    text-decoration: none;
+  }
+
+  .fc-scrollgrid tbody a {
+    color: #000;
+    text-decoration: none;
+  }
+
+  .fc .fc-button-primary:disabled {
+    background-color: var(--bg-color-button);
+    border-color: var(--bg-color-button);
+    color: var(--bg-color-text);
+}
+
+  .fc .fc-button-primary {
+    background-color: var(--bg-color-button);
+    border-color: var(--bg-color-button);
+    color: var(--bg-color-text);
+  }
+
+  .fc .fc-button-primary:hover {
+    background-color: var(--bs-success-border-subtle);
+    border-color: var(--bs-success-border-subtle);
+    
+  }
+
+  .fc .fc-button-primary:not(:disabled).fc-button-active, .fc .fc-button-primary:not(:disabled):active {
+    display: none;
+}
+

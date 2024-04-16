@@ -1,0 +1,16 @@
+<?php
+
+    require_once 'controllers/controlador.php';
+    require_once 'controllers/usuariosControlador.php';
+    require_once 'controllers/ciudadesControlador.php';
+    require_once 'controllers/rolesControlador.php';
+
+    require_once 'models/enlacesPaginasModelo.php';
+    require_once 'models/usuariosDAO.php';
+    require_once 'models/cuidadesDAO.php';
+    require_once 'models/rolesDAO.php';
+
+    $controlador = new Controlador();
+    $controlador -> cargarTemplate();
+
+?>

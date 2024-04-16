@@ -1,0 +1,140 @@
+<?php
+    // if (!isset($_SESSION['user'])) {
+    //     header("location:ingresar");
+    //     exit();
+    // }
+
+    $usuariosControlador = new UsuariosControlador();
+    if (isset($_POST['enviar'])) {
+        $usuariosControlador->actualizarUsuarioControlador();
+    }
+
+    if (isset($_GET['action'])) {
+            $action = explode("/", $_GET['action']);
+            $lista = $usuariosControlador -> listarUsuariosByIdControlador($action[2]);
+            // return $resultado;
+    }
+     
+?>
+
+<!-- <h1>EDITAR USUARIO</h1> -->
+
+<div class="card text-center container">
+    <div class="card-header">
+        <ul class="nav nav-tabs card-header-tabs">
+            <li class="nav-item">
+                <a class="nav-link " aria-current="true" href="<?php echo SERVERURL; ?>rolesUsuarios/consultarRolesUsuarios">Consultar roles de Usuarios</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="<?php echo SERVERURL; ?>rolesUsuarios/asignarRolesUsuarios">Asignar roles</a>
+            </li>
+        </ul>
+    </div>
+    
+    <div class="card">
+        <div class="card-body">
+            <form method="post" class="mt-4">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-2 d-flex flex-column align-items-start">
+                            <input type="hidden" name="id" value="<?php echo $lista['usuarios_id'] ?>">
+                            <label for="nombres" class="form-label">Nombres:</label>
+                            <input type="text" class="form-control nombres" name="nombres" id="nombres" value="<?php echo $lista['usuarios_nombres'] . " " . $lista['usuarios_apellidos'] ?>" disabled>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="mb-2 d-flex flex-column align-items-start">
+                            <label for="apellidos" class="form-label">Apellidos:</label>
+                            <!-- <input type="text" class="form-control" name="apellidos" id="apellidos" value="<?php echo $lista['usuarios_apellidos'] ?>" required> -->
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="mb-2 d-flex flex-column align-items-start">
+                            <label for="tipoIdentificacion" class="form-label">Tipo de Documento:</label>
+                            <select class="form-select" name="tipoIdentificacion" id="tipoIdentificacion" required>
+                        
+
+
+                                <option value="TI">Tarjeta de Identidad</option>
+                                <option value="CC">Cedula de Ciudadania</option>
+                                <option value="PTT">Cedula de Extranjería</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="mb-2 d-flex flex-column align-items-start">
+                            <label for="identificacion" class="form-label">Identificación:</label>
+                            <input type="number" class="form-control" name="identificacion" id="identificacion" value="<?php echo $lista['usuarios_identificacion'] ?>" required>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="mb-2 d-flex flex-column align-items-start">
+                            <label for="correo" class="form-label">Correo electronico:</label>
+                            <input type="email" class="form-control" name="correo" id="correo" value="<?php echo $lista['usuarios_correo'] ?>" required>
+                        </div>
+
+                        <div class="mb-2 d-flex flex-column align-items-start">
+                            <label for="estado" class="form-label">Estado:</label>
+                            <select class="form-select" name="estado" id="estado" required>
+                                <option value="activo">Activo</option>
+                                <option value="deshabilitado">Deshabilitado</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-2 d-flex flex-column align-items-start">
+                            <label for="roles" class="form-label">Rol:</label>
+                            <select class="form-select" name="roles" id="roles" required>
+
+                                <?php
+
+                                    $rolesControlador = new RolesControlador();
+
+                                    $datos = $rolesControlador -> listarRolesControlador();
+
+                                    foreach ($datos as $roles)  {
+                                        echo "<option value='" . $roles['roles_id'] . "'>" . $roles['roles_nombre'] . "</option>";
+                                    }
+
+                                ?>
+
+
+                                <!-- <option value="1">Girardot</option>
+                                <option value="2">Flandes</option>
+                                <option value="3">Ricaurte</option> -->
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <input type="submit" name="enviar" value="Guardar Usuario">
+                
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+<?php
+    if (isset($_GET["action"])) {
+        $action = explode("/", $_GET['action']);
+        if (count($action) == 4) {
+            switch ($action[3]) {
+                case "okUp":
+                    $msg = "Usuario Actualizado";
+                    break;
+
+                case "erUp":
+                    $msg = "Usuario NO Actualizado";
+                    break;
+
+                default :
+                    $msg = "";
+            }
+            echo "<center>" . $msg . "</center>";
+        }
+    }
+?>
