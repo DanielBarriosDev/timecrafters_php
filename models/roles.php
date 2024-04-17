@@ -2,7 +2,8 @@
 
 class Roles {
     
-    private $nombre;
+    private $rolesId;
+    private $rolesNombre;
 
     public function __construct() {
 
@@ -10,12 +11,20 @@ class Roles {
 
     // Getter y setter
 
-    public function getNombre () {
-        return $this -> nombre;
+    public function getRolesId () {
+        return $this -> rolesId;
     }
 
-    public function setNombre ($nombre) : void {
-        $this -> nombre = $nombre;
+    public function getRolesNombre () {
+        return $this -> rolesNombre;
+    }
+
+    public function setRolesId ($rolesId) {
+        $this -> rolesId = $rolesId;
+    }
+
+    public function setRolesNombre ($rolesNombre) {
+        $this -> rolesNombre = $rolesNombre;
     }
     
 }

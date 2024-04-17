@@ -2,68 +2,91 @@
 
 class Usuarios {
 
-    private $nombres;
-    private $apellidos;
-    private $tipoIdentificacion;
-    private $identificacion;
-    private $correo;
-    private $estado;
+    private $usuariosId;
+    private $usuariosNombres;
+    private $usuariosApellidos;
+    private $usuariosTipoIdentificacion;
+    private $usuariosIdentificacion;
+    private $usuariosCorreo;
+    private $usuariosEstado;
+    private $usuariosCiudadesId;
+
 
     public function __construct(){
-    }
 
+    }
 
     // Getter y setter
 
-    public function getNombres () {
-        return $this -> nombres;
+    public function getUsuariosId () {
+        return $this -> usuariosId;
     }
 
-    public function getApellidos (){
-        return $this -> apellidos;
+    public function getUsuariosNombres () {
+        return $this -> usuariosNombres;
     }
 
-    public function getTipoIdentificacion (){
-        return $this -> tipoIdentificacion;
+    public function getUsuariosApellidos () {
+        return $this -> usuariosApellidos;
     }
 
-    public function getIdentificacion() {
-        return $this -> identificacion;     
+    public function getUsuariosTipoIdentificacion () {
+        return $this -> usuariosTipoIdentificacion;
     }
 
-    public function getCorreo() {
-        return $this -> correo;
+    public function getUsuariosIdentificacion () {
+        return $this -> usuariosIdentificacion;
     }
 
-    public function getEstado() {
-        return $this -> estado;
+    public function getUsuariosCorreo () {
+        return $this -> usuariosCorreo;
+    }
+
+    public function getUsuariosEstado () {
+        return $this -> usuariosEstado;
+    }
+
+    public function getUsuariosCiudadesId () {
+        return $this -> usuariosCiudadesId;
     }
 
 
-    public function setNombres($nombres) : void {
-        $this -> nombres = $nombres;
+
+    public function setUsuariosId ($usuariosId) {
+        $this -> usuariosId = $usuariosId;
     }
 
-    public function setApellidos($apellidos) : void {
-        $this -> apellidos = $apellidos;
+    public function setUsuariosNombres ($usuariosNombres) {
+        $this -> usuariosNombres = $usuariosNombres;
     }
 
-    public function setTipoIdentificacion($tipoIdentificacion) : void {
-        $this -> tipoIdentificacion = $tipoIdentificacion;
+    public function setUsuariosApellidos ($usuariosApellidos) {
+        $this -> usuariosApellidos = $usuariosApellidos;
     }
 
-    public function setIdentificacion($identificacion) : void {
-        $this -> identificacion = $identificacion;
+    public function setUsuariosTipoIdentificacion ($usuariosTipoIdentificacion) {
+        $this -> usuariosTipoIdentificacion = $usuariosTipoIdentificacion;
     }
 
-    public function setCorreo($correo) : void {
-        $this -> correo = $correo;
+    public function setUsuariosIdentificacion ($usuariosIdentificacion) {
+        $this -> usuariosIdentificacion = $usuariosIdentificacion;
     }
 
-    public function setEstado($estado) : void {
-        $this -> estado = $estado;
+    public function setUsuariosCorreo ($usuariosCorreo) {
+        $this -> usuariosCorreo = $usuariosCorreo;
     }
 
+    public function setUsuariosEstado ($usuariosEstado) {
+        $this -> usuariosEstado = $usuariosEstado;
+    }
+
+    public function setUsuariosCiudadesId ($usuariosCiudadesId) {
+        $this -> usuariosCiudadesId = $usuariosCiudadesId;
+    }
+
+
+    
+   
 }
 
 ?>
