@@ -1,15 +1,3 @@
-<?php
-    $ciudadesControlador = new CiudadesControlador();
-
-    if (isset($_GET['action'])) {
-        $action = explode("/", $_GET['action']);
-        if (count($action) == 3 && $action[0] === "ciudades" && $action[1] === "eliminar") {
-            $ciudadId = $action[2];
-            $ciudadesControlador->eliminarCiudadesControlador($ciudadId);
-        }
-    }
-?>
-
 <!-- <h1>Consultar Ciudades</h1> -->
 
 <div class="card text-center container">
@@ -44,41 +32,41 @@
                 <tbody>
                     <?php
 
-                        $datos = $ciudadesControlador -> listarCiudadesControlador();
+                    $ciudadesControlador = new CiudadesControlador();
+                    $datos = $ciudadesControlador->listarCiudadesControlador();
 
-                        foreach ($datos as $key => $value) {
-                            echo "<tr>";
-                            echo "<td>" . $value['ciudades_id'] . "</td>";
-                            echo  "<td>" . $value['ciudades_nombre'] . "</td>";
-                            echo  "<td><center><a href='" . SERVERURL . "ciudades/editarCiudades/" . $value['ciudades_id'] ."'><i class='bi bi-pencil'></i></a></center></td>";
-                            echo  "<td><center><a href='" . SERVERURL . "ciudades/eliminar/" . $value['ciudades_id'] ."'><i class='bi bi-trash3'></i></a></center></td>";
-                            echo "</tr>";
-                        }
+                    foreach ($datos as $key => $value) {
+                        echo "<tr>";
+                        echo "<td>" . $value['ciudades_id'] . "</td>";
+                        echo  "<td>" . $value['ciudades_nombre'] . "</td>";
+                        echo  "<td><center><a href='" . SERVERURL . "ciudades/editarCiudades/" . $value['ciudades_id'] . "'><i class='bi bi-pencil'></i></a></center></td>";
+                        echo  "<td><center><a href='" . SERVERURL . "ciudades/eliminar/" . $value['ciudades_id'] . "'><i class='bi bi-trash3'></i></a></center></td>";
+                        echo "</tr>";
+                    }
                     ?>
                 </tbody>
             </table>
+
+            <?php
+
+            if (isset($action) && count($action) == 2) {
+                switch ($action[1]) {
+                    case 'okdel':
+                        $msg = "Ciudad eliminada correctamente";
+                        break;
+
+                    case 'errdel':
+                        $msg = "Error al eliminar la ciudad";
+                        break;
+
+                    default:
+                        $msg = "";
+                        break;
+                }
+                echo "<center>" . $msg . "</center>";
+            }
+
+            ?>
         </div>
     </div>
 </div>
-
-
-<?php
-
-    if (isset($action) && count($action) == 2) {
-        switch ($action[1]) {
-            case 'okdel':
-                $msg = "Ciudad eliminada correctamente";
-                break;
-            
-            case 'errdel':
-                $msg = "Error al eliminar la ciudad";
-                break;
-            
-            default:
-                $msg = "";
-                break;
-        }
-        echo "<center>" . $msg . "</center>";
-    }
-
-?>

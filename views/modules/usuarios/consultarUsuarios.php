@@ -5,13 +5,6 @@
 // }
 
     $usuariosControlador = new UsuariosControlador();
-    if (isset($_GET['action'])) {
-        $action = explode("/", $_GET['action']);
-        if (count($action) == 3) {
-            // $usuariosControlador -> eliminarUsuariosControlador($action[2]);
-        }
-    }
-
 
 ?>
 
@@ -46,7 +39,6 @@
             <table class="table table-striped ">
                 <thead>
                     <tr>
-                        <th>ID</th>
                         <th>Nombres</th>
                         <th>TI</th>
                         <th>Identificacion</th>
@@ -65,8 +57,7 @@
                     $datos = $usuariosControlador -> listarUsuariosControlador();
 
                     foreach ($datos as $value) {
-                        echo "<tr>";
-                        echo "<td id='fila'>" . $value['usuarios_id'] . "</td>";
+                        echo "<tr id='fila".$value['usuarios_id']."'>";
                         echo "<td>" . $value['usuarios_nombres'] . " " . $value['usuarios_apellidos'] . "</td>";
                         echo "<td>" . $value['usuarios_tipo_identificacion'] . "</td>";
                         echo "<td>" . $value['usuarios_identificacion'] . "</td>";
@@ -82,8 +73,25 @@
                 </tbody>
             </table>
         
-            <script src="<?php echo SERVERURL ?>views/js/validarEliminarUsuarios.js"></script>
+            <script src="<?php echo SERVERURL ?>views/js/usuariosJs/eliminarUsuarios.js"></script>
 
+            <?php
+            if (isset($action) && count($action) == 2) {
+                switch ($action[1]) {
+                    case "okdel":
+                        $msg = "Usuario eliminado correctamente";
+                        break;
+
+                    case "erdel":
+                        $msg = "Error al eliminar un usuario";
+                        break;
+
+                    default:
+                        $msg = "";
+                }
+                echo "<center>" . $msg . "</center>";
+            }
+            ?>
         </div>
 
 
@@ -103,21 +111,3 @@
     </div>
 </div>
 
-
-<?php
-if (isset($action) && count($action) == 2) {
-    switch ($action[1]) {
-        case "okdel":
-            $msg = "Usuario eliminado correctamente";
-            break;
-
-        case "erdel":
-            $msg = "Error al eliminar un usuario";
-            break;
-
-        default:
-            $msg = "";
-    }
-    echo "<center>" . $msg . "</center>";
-}
-?>

@@ -87,48 +87,46 @@
                 <input type="submit" name="enviar" value="Guardar Usuario">
                 
             </form>
+            <?php
+
+            if (isset($_GET['action'])) {
+                $accion = explode("/", $_GET['action']);
+                if (count($accion) > 2) {
+                    switch ($accion[2]) {
+                        case "okUser":
+                            $msg = "Usuario Registrado";
+                            break;
+
+                        case "erUser":
+                            $msg = "Usuario NO Registrado";
+                            break;
+
+                        case "regNom":
+                            $msg = "Acceso denegado Nombre de Usuario";
+                            break;
+
+                        case "regEmail":
+                            $msg = "Acceso denegado Email de Usuario";
+                            break;
+
+                        case "regCla":
+                            $msg = "Acceso denegado Clave de Usuario";
+                            break;
+
+                        case "regTer":
+                            $msg = "Acceso denegado Terminos";
+                            break;
+                    }
+                }
+
+                if (isset($msg)) {
+                    echo "<center>" . $msg . "</center>";
+                }
+            }
+
+            ?>
         </div>
     </div>
 </div>
 
-<?php
-
-
-
-if (isset($_GET['action'])) {
-    $accion = explode("/", $_GET['action']);
-    if (count($accion) > 2) {
-        switch ($accion[2]) {
-            case "okUser":
-                $msg = "Usuario Registrado";
-                break;
-
-            case "erUser":
-                $msg = "Usuario NO Registrado";
-                break;
-
-            case "regNom":
-                $msg = "Acceso denegado Nombre de Usuario";
-                break;
-
-            case "regEmail":
-                $msg = "Acceso denegado Email de Usuario";
-                break;
-
-            case "regCla":
-                $msg = "Acceso denegado Clave de Usuario";
-                break;
-
-            case "regTer":
-                $msg = "Acceso denegado Terminos";
-                break;
-        }
-    }
-
-    if (isset($msg)) {
-        echo "<center>" . $msg . "</center>";
-    }
-}
-
-?>
 

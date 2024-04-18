@@ -101,29 +101,28 @@
                 <input type="submit" name="enviar" value="Guardar Usuario">
                 
             </form>
+            <?php
+                if (isset($_GET["action"])) {
+                    $action = explode("/", $_GET['action']);
+                    if (count($action) == 4) {
+                        switch ($action[3]) {
+                            case "okUp":
+                                $msg = "Usuario Actualizado";
+                                break;
+
+                            case "erUp":
+                                $msg = "Usuario NO Actualizado";
+                                break;
+
+                            default :
+                                $msg = "";
+                        }
+                        echo "<center>" . $msg . "</center>";
+                    }
+                }
+            ?>
         </div>
     </div>
 </div>
 
 
-
-<?php
-    if (isset($_GET["action"])) {
-        $action = explode("/", $_GET['action']);
-        if (count($action) == 4) {
-            switch ($action[3]) {
-                case "okUp":
-                    $msg = "Usuario Actualizado";
-                    break;
-
-                case "erUp":
-                    $msg = "Usuario NO Actualizado";
-                    break;
-
-                default :
-                    $msg = "";
-            }
-            echo "<center>" . $msg . "</center>";
-        }
-    }
-?>

@@ -2,12 +2,12 @@ function validarEliminarUsuarios(event) {
 
     event.preventDefault();
     url = event.currentTarget.getAttribute('href');
-    alert(url);
+    // alert(url);
 
     urlArray = url.split("/");
 
     Swal.fire({
-        title: "¿Esta seguro de eliminar este registro?",
+        title: "¿Esta seguro de eliminar este usuario?",
         text: "!No podra revertir los cambios!",
         icon: "warning",
         showCancelButton: true,
@@ -20,7 +20,6 @@ function validarEliminarUsuarios(event) {
             var id = urlArray[6];   
             var datos = new FormData(); 
             var fila = '#fila' + id;
-
             datos.append("id", id);
             datos.append("ope", operacion);
             $.ajax ({
@@ -31,19 +30,20 @@ function validarEliminarUsuarios(event) {
                 contentType: false,
                 processData: false,
                 success: function (respuesta) {
-                    // console.log(respuesta);
-                    if (respuesta == "success") {
+                    console.log(respuesta);
+                    
+                    if (respuesta.trim() == "ok") {
                         Swal.fire({
                             title: "Eliminado!",
-                            text: "Tu registro se ha eliminado correctamente",
+                            text: "Tu Usuario se ha eliminado correctamente",
                             icon: "success"
                         });
                         $(fila).remove();
                     }
                     else {
                         Swal.fire({
-                            title: "!ERROR! Registro no eliminado",
-                            text: "El registro no fue eliminado",
+                            title: "!ERROR! Usuario no eliminado",
+                            text: "El Usuario no fue eliminado",
                             icon: "error"
                         }); 
                     }

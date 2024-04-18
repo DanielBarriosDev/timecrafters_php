@@ -29,36 +29,34 @@
             <!-- <button type="submit">Guardar ciudad</button> -->
         </form>
 
+        <?php
+
+            if (isset($_GET['action'])) {
+                $action = explode("/", $_GET['action']);
+                if (count($action) > 2) {
+                    switch ($action[2]) {
+                        case 'okRol':
+                            $msg = "Rol registrado";
+                            break;
+                        case 'errorRol':
+                            $msg = "errorRol";
+                            break;
+                        case 'regNom':
+                            $msg = "Acceso denegado nombre de Rol";
+                            break;
+                        default: 
+                            $msg = "";
+                            break;
+
+                    }
+                }
+
+                if (isset($msg)) {
+                    echo "<center>" . $msg . "</center>";
+                }
+            }
+            
+        ?>
     </div>
 
 </div>
-
-<?php
-
-    if (isset($_GET['action'])) {
-        $action = explode("/", $_GET['action']);
-        if (count($action) > 2) {
-            switch ($action[2]) {
-                case 'okRol':
-                    $msg = "Rol registrado";
-                    break;
-                case 'errorRol':
-                    $msg = "errorRol";
-                    break;
-                case 'regNom':
-                    $msg = "Acceso denegado nombre de Rol";
-                    break;
-                default: 
-                    $msg = "";
-                    break;
-
-            }
-        }
-
-        if (isset($msg)) {
-            echo "<center>" . $msg . "</center>";
-        }
-    }
-
-
-?>

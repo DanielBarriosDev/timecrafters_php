@@ -143,28 +143,23 @@ class UsuariosControlador{
     }
 
 
-    //Actualizar los datos del usuario
+    //Eliminar algun usuario
     ///////////////////////////////////////////
 
     public function eliminarUsuariosControlador($id){
         
-        $usuariosDao = new UsuariosDAO();
-        $respuesta = $usuariosDao -> eliminarUsuariosModelo($id);
+        if (isset($id)) {
+            $usuariosDao = new UsuariosDAO();
+            $respuesta = $usuariosDao -> eliminarUsuariosModelo($id);
+    
+            return $respuesta;
+            if ($respuesta == "success") {
+                header("location:" . SERVERURL . "usuarios/consultarUsuarios/okdel");
+            } else {
+                header("location:" . SERVERURL . "usuarios/consultarUsuarios/errdel");
+            }
+        }
 
-        return $respuesta;
-
-        // if (isset($_GET['id'])) {
-
-
-
-        //     if ($respuesta == "success") {
-        //         header("location:" . SERVERURL . "usuarios/consultarUsuarios/okdel");
-        //     } else {
-        //         header("location:" . SERVERURL . "usuarios/consultarUsuarios/errdel");
-        //     }
-        // }
-
-        // return $id;
     }
 }
 

@@ -1,7 +1,7 @@
 <?php
-    $ciudadesControlador = new CiudadesControlador();
-    $ciudadesControlador -> registrarCiudadesControlador();
-    
+$ciudadesControlador = new CiudadesControlador();
+$ciudadesControlador->registrarCiudadesControlador();
+
 ?>
 
 <!-- <h1>Registar Ciudades</h1> -->
@@ -30,38 +30,37 @@
             <!-- <button type="submit">Guardar ciudad</button> -->
         </form>
 
-    </div>
+        <?php
 
-</div>
+        if (isset($_GET['action'])) {
+            $action = explode("/", $_GET['action']);
+            if (count($action) > 2) {
+                switch ($action[2]) {
+                    case 'okCiudad':
+                        $msg = "Ciudad registrada";
+                        break;
 
+                    case 'errorCiudad':
+                        $msg = "Ciudad no registrada";
+                        break;
 
-<?php
+                    case 'regNom':
+                        $msg = "Acceso denegado nombre de Ciudad";
+                        break;
 
-    if (isset($_GET['action'])) {
-        $action = explode("/", $_GET['action']);
-        if (count($action) > 2) {
-            switch ($action[2]) {
-                case 'okCiudad':
-                    $msg = "Ciudad registrada";
-                    break;
-                
-                case 'errorCiudad':
-                    $msg = "Ciudad no registrada";
-                    break;
-                
-                case 'regNom':
-                    $msg = "Acceso denegado nombre de Ciudad";
-                    break;
+                    default:
+                        $msg = "";
+                        break;
+                }
+            }
 
-                default:
-                    $msg = "";
-                    break;
+            if (isset($msg)) {
+                echo "<center>" . $msg . "</center>";
             }
         }
 
-        if (isset($msg)) {
-            echo "<center>" . $msg . "</center>";
-        }
-    }
+        ?>
+    </div>
 
-?>
+
+</div>

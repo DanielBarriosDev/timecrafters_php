@@ -1,14 +1,14 @@
-<?php 
-    $rolesControlador = new RolesControlador();
+<?php
+$rolesControlador = new RolesControlador();
 
-    if (isset($_POST['enviar'])) {
-        $rolesControlador -> actualizarRolesControlador();
-    }
+if (isset($_POST['enviar'])) {
+    $rolesControlador->actualizarRolesControlador();
+}
 
-    if (isset($_GET['action'])) {
-        $action = explode("/", $_GET['action']);
-        $lista = $rolesControlador -> listarRolesByIdControlador($action[2]);
-    }
+if (isset($_GET['action'])) {
+    $action = explode("/", $_GET['action']);
+    $lista = $rolesControlador->listarRolesByIdControlador($action[2]);
+}
 
 ?>
 
@@ -37,27 +37,27 @@
             <!-- <button type="submit">Guardar ciudad</button> -->
         </form>
 
+        <?php
+        if (isset($_GET['action'])) {
+            $action = explode("/", $_GET['action']);
+            if (count($action) == 4) {
+                switch ($action[3]) {
+                    case "okUp":
+                        $msg = "Rol actualizado";
+                        break;
+                    case "erUp":
+                        $msg = "Rol NO actualizado";
+                        break;
+
+                    default:
+                        $msg = "";
+                }
+                echo "<center>" . $msg . "</center>";
+            }
+        }
+
+        ?>
+
     </div>
 
 </div>
-
-<?php 
-    if (isset($_GET['action'])) {
-        $action = explode("/", $_GET['action']);
-        if (count($action) == 4) {
-            switch ($action[3]) {
-                case "okUp":
-                    $msg = "Rol actualizado";
-                    break;
-                case "erUp":
-                    $msg = "Rol NO actualizado";
-                    break;
-                
-                default :
-                    $msg = "";
-            }
-            echo "<center>" . $msg . "</center>";
-        }
-    }
-
-?>

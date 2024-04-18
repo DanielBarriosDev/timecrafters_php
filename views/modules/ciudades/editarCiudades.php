@@ -1,14 +1,14 @@
 <?php
-    $ciudadesControlador = new CiudadesControlador();
+$ciudadesControlador = new CiudadesControlador();
 
-    if (isset($_POST['enviar'])) {
-        $ciudadesControlador -> actualizarCiudadesControlador();
-    }
+if (isset($_POST['enviar'])) {
+    $ciudadesControlador->actualizarCiudadesControlador();
+}
 
-    if (isset($_GET['action'])) {
-        $action = explode("/", $_GET['action']);
-        $lista = $ciudadesControlador -> listarCiudadesByIdControlador($action[2]);
-    }
+if (isset($_GET['action'])) {
+    $action = explode("/", $_GET['action']);
+    $lista = $ciudadesControlador->listarCiudadesByIdControlador($action[2]);
+}
 
 ?>
 
@@ -39,28 +39,30 @@
             <!-- <button type="submit">Guardar ciudad</button> -->
         </form>
 
+        <?php
+
+        if (isset($_GET["action"])) {
+            $action = explode("/", $_GET['action']);
+            if (count($action) == 4) {
+                switch ($action[3]) {
+                    case "okUp":
+                        $msg = "Ciudad Actualizada";
+                        break;
+
+                    case "erUp":
+                        $msg = "Ciudad NO Actualizada";
+                        break;
+
+                    default:
+                        $msg = "";
+                }
+                echo "<center>" . $msg . "</center>";
+            }
+        }
+        
+        ?>
+
+
     </div>
 
 </div>
-
-
-<?php
-    if (isset($_GET["action"])) {
-        $action = explode("/", $_GET['action']);
-        if (count($action) == 4) {
-            switch ($action[3]) {
-                case "okUp":
-                    $msg = "Ciudad Actualizada";
-                    break;
-
-                case "erUp":
-                    $msg = "Ciudad NO Actualizada";
-                    break;
-
-                default :
-                    $msg = "";
-            }
-            echo "<center>" . $msg . "</center>";
-        }
-    }
-?>

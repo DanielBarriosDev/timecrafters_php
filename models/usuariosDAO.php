@@ -203,8 +203,7 @@
                         $stmt -> execute();
 
                         if ($stmt -> rowCount() > 0) {
-                            return "success";
-
+                            return "ok";
                             $conexion = null;
                             $stmt = null;
 
