@@ -1,26 +1,28 @@
 <?php
-include_once '../../../controllers/usuariosControlador.php';
-include_once '../../../models/usuariosDAO.php';
+    include_once '../../../controllers/usuariosControlador.php';
+    include_once '../../../models/usuariosDAO.php';
 
-class AjaxUsuarios{
+    class AjaxUsuarios{
 
-    public $url;
-    public $id;
-    public $ope;
+        public $url;
+        public $id;
+        public $ope;
 
 
-    public function eliminarUsuarios(){
-        $usuariosControlador = new UsuariosControlador();
-        $respuesta = $usuariosControlador->eliminarUsuariosControlador($this->id);
-        print $respuesta;
+        public function eliminarUsuarios (){
+            $usuariosControlador = new UsuariosControlador();
+            $respuesta = $usuariosControlador -> eliminarUsuariosControlador($this -> id);
+            print $respuesta;
+        }
     }
-}
 
 
-$ajaxUsuarios = new AjaxUsuarios();
+    $ajaxUsuarios = new AjaxUsuarios();
 
-if (isset($_POST['id']) && isset($_POST['ope'])) {
-    $ajaxUsuarios->id = $_POST['id'];
-    $ajaxUsuarios->ope = $_POST['ope'];
-    $ajaxUsuarios->eliminarUsuarios();
-}
+    if (isset($_POST['id']) && isset($_POST['ope'])) {
+        $ajaxUsuarios -> id = $_POST['id'];
+        $ajaxUsuarios -> ope = $_POST['ope'];
+        $ajaxUsuarios -> eliminarUsuarios();
+    }
+
+?>

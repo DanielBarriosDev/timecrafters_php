@@ -33,7 +33,14 @@
 
         public function listarRolesControlador () {
             $rolesDao = new RolesDAO();
-            $listado = $rolesDao -> listarRolesModelo();
+
+            if (isset($_POST['busqueda'])) {
+                $busqueda = $_POST['busqueda'];
+                $listado = $rolesDao -> listarRolesBusquedaModelo($busqueda);
+            }
+            else {
+                $listado = $rolesDao -> listarRolesModelo();
+            }
             return $listado;
         }
 
@@ -74,6 +81,8 @@
             if (isset($id)) {
                 $rolesDao = new RolesDAO();
                 $respuesta = $rolesDao -> eliminarRolesModelo($id);
+
+                return $respuesta;
 
                 if ($respuesta == "success") {
                     header("location" . SERVERURL . "roles/eliminar/okdel");

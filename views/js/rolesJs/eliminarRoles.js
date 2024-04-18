@@ -1,5 +1,5 @@
 
-function eliminarCiudades (event) {
+function eliminarRoles (event) {
 
     event.preventDefault();
     url = event.currentTarget.getAttribute('href');
@@ -8,7 +8,7 @@ function eliminarCiudades (event) {
     urlArray = url.split("/");
 
     Swal.fire({
-        title: "¿Esta seguro de eliminar esta ciudad?",
+        title: "¿Esta seguro de eliminar este rol?",
         text: "!No podra revertir los cambios!",
         icon: "warning",
         showCancelButton: true,
@@ -24,7 +24,7 @@ function eliminarCiudades (event) {
             datos.append("ope", operacion);
             datos.append("id", id);
             $.ajax ({
-                url: "http://localhost/timecrafters/views/modules/ciudades/ajaxCiudades.php",
+                url: "http://localhost/timecrafters/views/modules/roles/ajaxRoles.php",
                 method: "POST",
                 data: datos,
                 cache: false,
@@ -36,15 +36,15 @@ function eliminarCiudades (event) {
                     if (respuesta.trim() == "ok") {
                         Swal.fire({
                             title: "Eliminado!",
-                            text: "La ciudad se ha eliminado correctamente",
+                            text: "El rol se ha eliminado correctamente",
                             icon: "success"
                         });
                         $(fila).remove();
                     }
                     else {
                         Swal.fire({
-                            title: "!ERROR! Ciudad no eliminada",
-                            text: "La ciudad no fue eliminada",
+                            title: "!ERROR! Rol no eliminado",
+                            text: "El rol no fue eliminado",
                             icon: "error"
                         }); 
                     }

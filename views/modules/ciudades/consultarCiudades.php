@@ -15,8 +15,8 @@
         <div class="card-body">
             <nav class="navbar bg-body-tertiary">
                 <div class="container-fluid">
-                    <form class="d-flex w-100" role="search">
-                        <input class="form-control me-2 flex-grow-1" type="search" placeholder="Buscar" aria-label="Search">
+                    <form class="d-flex w-100" role="search" method="post">
+                        <input class="form-control me-2 flex-grow-1" type="search" name="busqueda" id="busqueda" aria-label="Search" placeholder="Busqueda de ciudad">
                         <button type="submit">Buscar</button>
                     </form>
                 </div>
@@ -27,6 +27,8 @@
                     <tr>
                         <th scope="col">ID</th>
                         <th scope="col">Ciudad</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -36,16 +38,18 @@
                     $datos = $ciudadesControlador->listarCiudadesControlador();
 
                     foreach ($datos as $key => $value) {
-                        echo "<tr>";
+                        echo "<tr id='fila" . $value['ciudades_id'] . "'>";
                         echo "<td>" . $value['ciudades_id'] . "</td>";
                         echo  "<td>" . $value['ciudades_nombre'] . "</td>";
                         echo  "<td><center><a href='" . SERVERURL . "ciudades/editarCiudades/" . $value['ciudades_id'] . "'><i class='bi bi-pencil'></i></a></center></td>";
-                        echo  "<td><center><a href='" . SERVERURL . "ciudades/eliminar/" . $value['ciudades_id'] . "'><i class='bi bi-trash3'></i></a></center></td>";
+                        echo  "<td><center><a href='" . SERVERURL . "ciudades/eliminar/" . $value['ciudades_id'] . "' onclick='return eliminarCiudades(event);'><i class='bi bi-trash3'></i></a></center></td>";
                         echo "</tr>";
                     }
                     ?>
                 </tbody>
             </table>
+
+            <script src="<?php echo SERVERURL ?>views/js/ciudadesJs/eliminarCiudades.js"></script>
 
             <?php
 

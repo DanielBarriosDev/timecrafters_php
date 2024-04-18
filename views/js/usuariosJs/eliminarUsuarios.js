@@ -1,8 +1,9 @@
-function validarEliminarUsuarios(event) {
+
+function eliminarUsuarios(event) {
 
     event.preventDefault();
     url = event.currentTarget.getAttribute('href');
-    // alert(url);
+    alert(url);
 
     urlArray = url.split("/");
 
@@ -16,12 +17,12 @@ function validarEliminarUsuarios(event) {
         confirmButtonText: "Eliminar"
     }).then((result) => {
         if (result.isConfirmed) {
-            var operacion = urlArray[7];
+            var operacion = urlArray[5];
             var id = urlArray[6];   
             var datos = new FormData(); 
             var fila = '#fila' + id;
-            datos.append("id", id);
             datos.append("ope", operacion);
+            datos.append("id", id);
             $.ajax ({
                 url: "http://localhost/timecrafters/views/modules/usuarios/ajaxUsuarios.php",
                 method: "POST",

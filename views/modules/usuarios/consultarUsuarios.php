@@ -4,13 +4,7 @@
 //     exit();
 // }
 
-    $usuariosControlador = new UsuariosControlador();
-
 ?>
-
-<!-- <h1>Listado de Usuarios</h1> -->
-
-<!-- <h3>Bienvenido: <?php echo $_SESSION['user'] ?></h3> -->
 
 <div class="card text-center container">
     <div class="card-header">
@@ -25,17 +19,17 @@
     </div>
     <div class="card">
         <div class="card-body">
-
-
+            
+            
             <nav class="navbar bg-body-tertiary">
                 <div class="container-fluid">
                     <form class="d-flex w-100" role="search" method="post">
-                        <input class="form-control me-2 flex-grow-1" type="search" name="busqueda" id="busqueda"  aria-label="Search" placeholder="Busqueda de usuario">
+                        <input class="form-control me-2 flex-grow-1" type="search" name="busqueda" id="busqueda" aria-label="Search" placeholder="Busqueda de usuario">
                         <button type="submit">Buscar</button>
                     </form>
                 </div>
             </nav>
-
+            
             <table class="table table-striped ">
                 <thead>
                     <tr>
@@ -49,15 +43,16 @@
                         <th></th>
                         <th></th>
                     </tr>
-
+                    
                 </thead>
                 <tbody>
                     <?php
 
+                    $usuariosControlador = new UsuariosControlador();
                     $datos = $usuariosControlador -> listarUsuariosControlador();
 
                     foreach ($datos as $value) {
-                        echo "<tr id='fila".$value['usuarios_id']."'>";
+                        echo "<tr id='fila" .$value['usuarios_id']. "'>";
                         echo "<td>" . $value['usuarios_nombres'] . " " . $value['usuarios_apellidos'] . "</td>";
                         echo "<td>" . $value['usuarios_tipo_identificacion'] . "</td>";
                         echo "<td>" . $value['usuarios_identificacion'] . "</td>";
@@ -66,7 +61,7 @@
                         echo "<td>" . $value['ciudades_nombre'] . "</td>";
                         echo "<td><center><a href='" . SERVERURL . "rolesUsuarios/asignarRolesUsuarios/" . $value['usuarios_id'] . "'><i class='bi bi-person-gear'></i></i></a></center></td>";
                         echo "<td><center><a href='" . SERVERURL . "usuarios/editarUsuarios/" . $value['usuarios_id'] . "'><i class='bi bi-pencil'></i></a></center></td>";
-                        echo "<td><center><a href='" . SERVERURL . "usuarios/eliminar/" . $value['usuarios_id'] . "' onclick='return validarEliminarUsuarios(event);'><i class='bi bi-trash3'></i></a></center></td>";
+                        echo "<td><center><a href='" . SERVERURL . "usuarios/eliminar/" . $value['usuarios_id'] . "' onclick='return eliminarUsuarios(event);'><i class='bi bi-trash3'></i></a></center></td>";
                         echo "</tr>";
                     }
                     ?>

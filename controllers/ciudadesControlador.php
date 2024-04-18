@@ -31,7 +31,14 @@
 
         public function listarCiudadesControlador () {
             $ciudadesDao = new CiudadesDAO();
-            $listado = $ciudadesDao -> listarCiudadesModelo();
+
+            if (isset($_POST['busqueda'])) {
+                $busqueda = $_POST['busqueda'];
+                $listado = $ciudadesDao -> listarCiudadesBusquedaModelo($busqueda);
+            }
+            else {
+                $listado = $ciudadesDao -> listarCiudadesModelo();
+            }
             return $listado;
         }
 
@@ -72,22 +79,19 @@
         }
 
         public function eliminarCiudadesControlador($id) {
+
             if (isset($id)) {
                 $ciudadesDao = new CiudadesDAO();
-                $respuesta = $ciudadesDao->eliminarCiudadesModelo($id);
+                $respuesta = $ciudadesDao -> eliminarCiudadesModelo($id);
+
+                return $respuesta;
             
                 if ($respuesta == "success") {
                     header("location:" . SERVERURL . "ciudades/eliminar/okdel");
-                    exit();
                 } else {
                     header("location:" . SERVERURL . "ciudades/eliminar/errdel");
-                    exit();
                 }
-            } else {
-                // Manejar el caso cuando no se proporciona un ID válido
-                header("location:" . SERVERURL . "ciudades/eliminar/errdel");
-                exit();
-            }
+            } 
         }
 
     }

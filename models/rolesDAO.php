@@ -1,6 +1,11 @@
 <?php
 
-    require_once 'config/conexion.php';
+    if(!file_exists("config/conexion.php")){
+        require_once '../../../config/conexion.php';
+    }
+    else{
+        require_once 'config/conexion.php';
+    }
     
     class RolesDAO extends Conexion {
 
@@ -42,6 +47,26 @@
 
             } catch (\Throwable $th) {
                 echo $th -> getTraceAsString();
+            }
+        }
+
+        public function listarRolesBusquedaModelo ($busqueda) {
+            $sql = "SELECT roles_id, roles_nombre
+                    FROM roles
+                    WHERE roles_nombre LIKE '%$busqueda%'
+                    ORDER BY roles_nombre";
+
+            try {
+                $conexion = new Conexion;
+                $stmt = $conexion -> conectar() -> prepare($sql);
+                $stmt -> execute();
+
+                return $stmt -> fetchAll();
+
+                $conexion = null;
+                $stmt = null;
+            } catch (\Throwable $th) {
+                echo $th  -> getTraceAsString();
             }
         }
 
@@ -97,23 +122,29 @@
 
                 if ($stmt -> execute()) {
                     $roles = $stmt -> fetch();
+                }
 
-                    if ($roles['valor'] >= 1) {
-                        $sql2 = "DELETE FROM roles where roles_id = :id";
-                        
-                        $stmt = $conexion -> conectar() ->prepare($sql2);
+                if ($roles['valor'] > 1) {
+                    try {
+                        $stmt = null;
+                        $stmt = $conexion -> conectar() -> prepare($sql2);
+
                         $stmt -> bindParam(":id", $id, PDO::PARAM_INT);
+                        $stmt -> execute();
 
-                        if ($stmt -> execute()) {
-                            return "success";
-                        }
-                        else {
+                        if ($stmt -> rowCount() > 0) {
+                            return "ok";
+                            $conexion = null;
+                            $stmt = null;
+
+                        } else {
                             return "error";
                         }
-                    } else {
-                        return "error";
+                    } catch (\Throwable $th) {
+                        //throw $th;
                     }
-                    $stmt = null;
+                } else {
+                    return "error";
                 }
             } catch (\Throwable $th) {
                 echo $th -> getTraceAsString();
