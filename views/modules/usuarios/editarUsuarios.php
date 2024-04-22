@@ -54,9 +54,20 @@
                         <div class="mb-2 d-flex flex-column align-items-start">
                             <label for="tipoIdentificacion" class="form-label">Tipo de Documento:</label>
                             <select class="form-select" name="tipoIdentificacion" id="tipoIdentificacion" required>
-                                <option value="TI">Tarjeta de Identidad</option>
-                                <option value="CC">Cedula de Ciudadania</option>
-                                <option value="PTT">Cedula de Extranjería</option>
+                                <?php
+
+                                    $tipoIdentificacion = [
+                                        'TI' => 'Tarjeta de Identidad',
+                                        'CC' => 'Cedula de Ciudadania',
+                                        'PTT' => 'Cedula de Extranjería'
+                                    ];
+
+                                    foreach ($tipoIdentificacion as $tipo => $nombre) {
+                                        $selected = ($lista['usuarios_tipo_identificacion'] == $tipo) ? 'selected' : '';
+                                        echo "<option value='$tipo' $selected>$nombre</option>"; 
+                                    }
+
+                                ?>
                             </select>
                         </div>
                     </div>
@@ -77,8 +88,17 @@
                         <div class="mb-2 d-flex flex-column align-items-start">
                             <label for="estado" class="form-label">Estado:</label>
                             <select class="form-select" name="estado" id="estado" required>
-                                <option value="Activo">Activo</option>
-                                <option value="Inactivo">Inactivo</option>
+                                <?php
+                                    $estado = [
+                                        'Activo' => 'Activo',
+                                        'Inactivo' => 'Inactivo'
+                                    ];
+
+                                    foreach ($estado as $valor => $nombre) {
+                                        $selected = ($lista['usuarios_estado'] == $valor) ? 'selected' : '';
+                                        echo "<option value='$valor' $selected>$nombre</option>";
+                                    }
+                                ?>
                             </select>
                         </div>
 
@@ -91,7 +111,8 @@
                                     $datos = $ciudadesControlador -> listarCiudadesControlador();
 
                                     foreach ($datos as $ciudades) {
-                                        echo "<option value='" . $ciudades['ciudades_id'] . "'>" . $ciudades['ciudades_nombre'] . "</option>";
+                                        $selected = ($lista['usuarios_ciudades_id'] == $ciudades['ciudades_id']) ? 'selected' : '';
+                                        echo "<option value='" . $ciudades['ciudades_id'] . "' $selected>" . $ciudades['ciudades_nombre'] . "</option>";
                                     }
                                 ?>                               
                             </select>

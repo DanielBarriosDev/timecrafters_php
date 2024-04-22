@@ -25,12 +25,41 @@
             return $this -> rolesUsuariosFechaCancelacion;
         }
 
+        public function getRolesUsuariosEstado () {
+            return $this -> rolesUsuariosEstado;
+        }
+
+        public function getRolesUsuariosUsuariosId () {
+            return $this -> rolesUsuariosUsuariosId;
+        }
+
+        public function getRolesUsuariosRolesId () {
+            return $this -> rolesUsuariosRolesId;
+        }
 
 
+        public function setRolesUsuariosId ($rolesUsuariosId) {
+            $this -> rolesUsuariosId = $rolesUsuariosId;
+        }
 
+        public function setRolesUsuariosFechaAsignacion ($rolesUsuariosFechaAsignacion) {
+            $this -> rolesUsuariosFechaAsignacion = $rolesUsuariosFechaAsignacion;
+        }
 
-        public function setRolPrincipal ($rolPrincipal) : void {
-            $this -> rolPrincipal = $rolPrincipal;
+        public function setRolesUsuariosFechaCancelacion ($rolesUsuariosFechaCancelacion) {
+            $this -> rolesUsuariosFechaCancelacion = $rolesUsuariosFechaCancelacion;
+        }
+
+        public function setRolesUsuariosEstado ($rolesUsuariosEstado) {
+            $this -> rolesUsuariosEstado = $rolesUsuariosEstado;
+        }
+
+        public function setRolesUsuariosUsuariosId ($rolesUsuariosUsuariosId) {
+            $this -> rolesUsuariosUsuariosId = $rolesUsuariosUsuariosId;
+        }
+
+        public function setRolesUsuariosRolesId ($rolesUsuariosRolesId) {
+            $this -> rolesUsuariosRolesId = $rolesUsuariosRolesId;
         }
 
     }
