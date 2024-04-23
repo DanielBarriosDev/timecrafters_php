@@ -48,9 +48,20 @@
                 }
 
             }
+        }
 
+        public function listarRolesUsuariosControlador () {
+            $rolesUsuariosDao = new RolesUsuariosDAO;
 
+            if (isset($_POST['busqueda'])) {
+                $busqueda = $_POST['busqueda'];
+                $listado = $rolesUsuariosDao -> listarRolesUsuariosModelo($busqueda);
+            }
+            else {
+                $listado = $rolesUsuariosDao -> listarRolesUsuariosModelo();
+            }
 
+            return $listado;
         }
 
     }

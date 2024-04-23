@@ -42,6 +42,34 @@
             }
         }
 
+        public function listarRolesUsuariosModelo () {
+            $sql = "SELECT ru.roles_usuarios_id,
+                            ru.roles_usuarios_fecha_asignacion,
+                            ru.roles_usuarios_fecha_cancelacion,
+                            ru.roles_usuarios_estado,
+                            u.usuarios_nombres,
+                            u.usuarios_apellidos,
+                            u.usuarios_identificacion,
+                            r.roles_nombre
+                    FROM roles_usuarios ru
+                    INNER JOIN usuarios u ON ru.roles_usuarios_usuarios_id = u.usuarios_id
+                    INNER JOIN roles r ON ru.roles_usuarios_roles_id = r.roles_id";
+
+            try {
+                $conexion = new Conexion();
+                $stmt = $conexion -> conectar() -> prepare($sql);
+                $stmt -> execute();
+
+                return $stmt -> fetchAll();
+
+                $conexion = null;
+                $stmt = null;
+
+            } catch (\Throwable $th) {
+                echo $th  -> getTraceAsString();
+            }
+        }
+
     }
 
 ?>

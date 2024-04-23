@@ -48,19 +48,18 @@
                     <?php
 
                     $rolesUsuariosControlador = new RolesUsuariosControlador();
-                    $datos = $rolesUsuariosControlador -> listarUsuariosControlador();
+                    $datos = $rolesUsuariosControlador -> listarRolesUsuariosControlador();
 
                     foreach ($datos as $value) {
-                        echo "<tr id='fila" .$value['usuarios_id']. "'>";
+                        echo "<tr id='fila" . $value['roles_usuarios_id'] . "'>";
                         echo "<td>" . $value['usuarios_nombres'] . " " . $value['usuarios_apellidos'] . "</td>";
-                        echo "<td>" . $value['usuarios_tipo_identificacion'] . "</td>";
                         echo "<td>" . $value['usuarios_identificacion'] . "</td>";
-                        echo "<td>" . $value['usuarios_identificacion'] . "</td>";
-                        echo "<td>" . $value['usuarios_identificacion'] . "</td>";
-                        echo "<td>" . $value['usuarios_identificacion'] . "</td>";
-                        echo "<td><center><a href='" . SERVERURL . "rolesUsuarios/asignarRolesUsuarios/" . $value['usuarios_id'] . "'><i class='bi bi-person-gear'></i></i></a></center></td>";
-                        echo "<td><center><a href='" . SERVERURL . "usuarios/editarUsuarios/" . $value['usuarios_id'] . "'><i class='bi bi-pencil'></i></a></center></td>";
-                        echo "<td><center><a href='" . SERVERURL . "usuarios/eliminar/" . $value['usuarios_id'] . "' onclick='return eliminarUsuarios(event);'><i class='bi bi-trash3'></i></a></center></td>";
+                        echo "<td>" . $value['roles_usuarios_fecha_asignacion'] . "</td>";
+                        echo "<td>" . $value['roles_usuarios_fecha_cancelacion'] . "</td>";
+                        echo "<td>" . $value['roles_nombre'] . "</td>";
+                        echo "<td>" . $value['roles_usuarios_estado'] . "</td>";
+                        echo "<td><center><a href='" . SERVERURL . "usuarios/editarUsuarios/" . $value['roles_usuarios_id'] . "'><i class='bi bi-pencil'></i></a></center></td>";
+                        echo "<td><center><a href='" . SERVERURL . "usuarios/eliminar/" . $value['roles_usuarios_id'] . "' onclick='return eliminarUsuarios(event);'><i class='bi bi-trash3'></i></a></center></td>";
                         echo "</tr>";
                     }
                     ?>

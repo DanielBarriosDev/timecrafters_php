@@ -121,7 +121,7 @@
                                     ];
 
                                     foreach ($estadoRol as $estado => $nombre){
-                                        $selected = ($lista['roles_usuarios_estado'] == $estadoRol) ? 'selected' : '';
+                                        // $selected = ($lista['roles_usuarios_estado'] == $estadoRol) ? 'selected' : '';
                                         echo "<option value='$estado' $selected>$nombre</option>";
                                     }
                                 ?>
