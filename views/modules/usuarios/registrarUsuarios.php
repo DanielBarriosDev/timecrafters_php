@@ -19,7 +19,7 @@
 
     <div class="card">
         <div class="card-body">
-            <form method="post" class="mt-4" id="formularioUsuarios">
+            <form method="post" class="mt-4" id="formularioUsuarios" onsubmit="return">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="mb-2 d-flex flex-column align-items-start">
@@ -128,5 +128,7 @@
         </div>
     </div>
 </div>
+<script src="<?php echo SERVERURL; ?>views/js/usuariosJs/validarUsuarios.js"></script>
+
 
 

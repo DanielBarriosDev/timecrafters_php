@@ -161,6 +161,20 @@ class UsuariosControlador{
         }
 
     }
+
+
+    //// Validacion en Ajax
+
+    public function validarUsuariosControlador ($identificacion) {
+        $usuariosDao = new UsuariosDAO;
+        $respuesta = $usuariosDao -> validarUsuariosModelo($identificacion);
+        if ($respuesta > 0) {
+            return "si";
+        }
+        else {
+            return "no";
+        }
+    }
 }
 
 ?>

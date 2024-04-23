@@ -7,6 +7,16 @@
         public $url;
         public $id;
         public $ope;
+        public $identificacion;
+        public $validarUsuarios;
+
+
+        public function validarUsuarios () {
+            $identificacion = $_POST['identificacion'];
+            $usuariosControlador = new UsuariosControlador();
+            $respuesta = $usuariosControlador -> validarUsuariosControlador($identificacion);
+            print $respuesta;
+        }
 
 
         public function eliminarUsuarios (){

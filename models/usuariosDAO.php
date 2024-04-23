@@ -222,5 +222,26 @@
         }
 
 
+        ///////// Validaciones en ajax
+
+        public function validarUsuariosModelo ($identificacion) {
+            $sql = "SELECT usuarios_id, usuarios_identificacion FROM usuarios WHERE usuarios_identificacion = :identificacion";
+
+            try {
+                $conexion = new Conexion();
+                $stmt = $conexion -> conectar() -> prepare($sql);
+
+                $stmt -> bindParam(":identificacion", $identificacion, PDO::PARAM_STR);
+                $stmt -> execute();
+                return $stmt -> fetch();
+
+                $conexion = null;
+                $stmt = null; 
+            } catch (\Throwable $th) {
+                echo $th->getTraceAsString();
+            }
+        }
+
+
     }
 ?>
