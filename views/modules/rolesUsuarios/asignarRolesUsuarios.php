@@ -1,23 +1,20 @@
 <?php
-    // if (!isset($_SESSION['user'])) {
-    //     header("location:ingresar");
-    //     exit();
-    // }
+// if (!isset($_SESSION['user'])) {
+//     header("location:ingresar");
+//     exit();
+// }
 
-    $usuariosControlador = new UsuariosControlador();
-    // if (isset($_POST['enviar'])) {
-    //     $usuariosControlador->actualizarUsuarioControlador();
-    // }
+$usuariosControlador = new UsuariosControlador();
+$rolesControlador = new RolesControlador();
 
-    if (isset($_GET['action'])) {
-            $action = explode("/", $_GET['action']);
-            $lista = $usuariosControlador -> listarUsuariosByIdControlador($action[2]);
-            // return $resultado;
-    }
-     
+
+
+if (isset($_GET['action'])) {
+    $action = explode("/", $_GET['action']);
+    $lista = $usuariosControlador->listarUsuariosByIdControlador($action[2]);
+}
+
 ?>
-
-<!-- <h1>EDITAR USUARIO</h1> -->
 
 <div class="card text-center container">
     <div class="card-header">
@@ -30,7 +27,7 @@
             </li>
         </ul>
     </div>
-    
+
     <div class="card">
         <div class="card-body">
             <form method="post" class="mt-4">
@@ -48,16 +45,16 @@
                             <label for="tipoIdentificacion" class="form-label">Tipo de Documento:</label>
                             <select class="form-select" name="tipoIdentificacion" id="tipoIdentificacion" disabled>
                                 <?php
-                                    $tipoIdentificacion = [
-                                        'TI' => 'Tarjeta de Identidad',
-                                        'CC' => 'Cedula de Ciudadania',
-                                        'PTT' => 'Cedula de Extranjería'
-                                    ];
+                                $tipoIdentificacion = [
+                                    'TI' => 'Tarjeta de Identidad',
+                                    'CC' => 'Cedula de Ciudadania',
+                                    'PTT' => 'Cedula de Extranjería'
+                                ];
 
-                                    foreach ($tipoIdentificacion as $tipo => $nombre) {
-                                        $selected = ($lista['usuarios_tipo_identificacion'] == $tipo) ? 'selected' : '';
-                                        echo "<option value='$tipo' $selected>$nombre</option>";
-                                    }
+                                foreach ($tipoIdentificacion as $tipo => $nombre) {
+                                    $selected = ($lista['usuarios_tipo_identificacion'] == $tipo) ? 'selected' : '';
+                                    echo "<option value='$tipo' $selected>$nombre</option>";
+                                }
                                 ?>
                             </select>
                         </div>
@@ -80,57 +77,58 @@
                     <div class="col-md-6">
                         <div class="mb-2 d-flex flex-column align-items-start">
                             <label for="fechaAsignacion" class="form-label">Fecha Asignación:</label>
-                            <input type="date" class="form-control" name="fechaAsignacion" id="fechaAsignacion"  >
+                            <input type="date" class="form-control" name="fechaAsignacion" id="fechaAsignacion">
                         </div>
                     </div>
 
                     <div class="col-md-6">
                         <div class="mb-2 d-flex flex-column align-items-start">
                             <label for="fechaCancelacion" class="form-label">Fecha Cancelación:</label>
-                            <input type="date" class="form-control" name="fechaCancelacion" id="fechaCancelacion"  >
+                            <input type="date" class="form-control" name="fechaCancelacion" id="fechaCancelacion">
                         </div>
                     </div>
 
                     <div class="col-md-12">
                         <div class="mb-2 d-flex flex-column align-items-start">
                             <label for="roles" class="form-label">Roles:</label>
-                            <select class="form-select" name="roles[]" id="roles" multiple required>
+                            <div id="roles-container">
                                 <?php
-                                    $rolesControlador = new RolesControlador();
+
                                     $roles = $rolesControlador -> listarRolesControlador();
 
                                     foreach ($roles as $rol) {
-                                        echo "<option value='" . $rol['roles_id'] . "'>" . $rol['roles_nombre'] . "</option>";
+                                        $checkboxId = "rol_" . $rol['roles_id'];
+                                        echo "<div class='form-check'>
+                                                <input type='checkbox' class='form-check-input' id='$checkboxId' name='roles[]' value='" . $rol['roles_id'] . "' aria-label='" . $rol['roles_nombre'] . "'>
+                                                <span class='form-check-label'>" . $rol['roles_nombre'] . "</span>
+                                            </div>";
                                     }
                                 ?>
-
-                            </select>
+                            </div>
                         </div>
                     </div>
-
-                    
 
                     <div class="col-md-12">
                         <div class="mb-2 d-flex flex-column align-items-start">
                             <label for="estadoRol" class="form-label">Estado del rol:</label>
                             <select class="form-select" name="estadoRol" id="estadoRol" required>
                                 <?php
-                                    $estadoRol = [
-                                        'Activo' => 'Activo',
-                                        'Inactivo' => 'Inactivo'
-                                    ];
+                                $estadoRol = [
+                                    'Activo' => 'Activo',
+                                    'Inactivo' => 'Inactivo'
+                                ];
 
-                                    foreach ($estadoRol as $estado => $nombre){
-                                        // $selected = ($lista['roles_usuarios_estado'] == $estadoRol) ? 'selected' : '';
-                                        echo "<option value='$estado' $selected>$nombre</option>";
-                                    }
+                                foreach ($estadoRol as $estado => $nombre) {
+                                    // $selected = ($lista['roles_usuarios_estado'] == $estadoRol) ? 'selected' : '';
+                                    echo "<option value='$estado'>$nombre</option>";
+                                }
                                 ?>
                             </select>
                         </div>
                     </div>
                 </div>
-                <input type="submit" name="enviar" value="Guardar Usuario">
-                
+                <input type="submit" name="enviar" value="Asignar Roles">
+
             </form>
         </div>
     </div>
@@ -139,22 +137,22 @@
 
 
 <?php
-    if (isset($_GET["action"])) {
-        $action = explode("/", $_GET['action']);
-        if (count($action) == 4) {
-            switch ($action[3]) {
-                case "okAsignacion":
-                    $msg = "Rol Asignado";
-                    break;
+if (isset($_GET["action"])) {
+    $action = explode("/", $_GET['action']);
+    if (count($action) == 4) {
+        switch ($action[3]) {
+            case "okAsignacion":
+                $msg = "Rol Asignado";
+                break;
 
-                case "errAsignacion":
-                    $msg = "Rol NO Asignado";
-                    break;
+            case "errAsignacion":
+                $msg = "Rol NO Asignado";
+                break;
 
-                default :
-                    $msg = "";
-            }
-            echo "<center>" . $msg . "</center>";
+            default:
+                $msg = "";
         }
+        echo "<center>" . $msg . "</center>";
     }
+}
 ?>
