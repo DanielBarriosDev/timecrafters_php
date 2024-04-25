@@ -30,10 +30,8 @@
                 else {
 
                     $datos = array(
-                        'fechaAsignacion' => $_POST['fechaAsignacion'],
-                        'fechaCancelacion' => $_POST['fechaCancelacion'],
-                        'roles' => $_POST['roles'],
-                        'estadoRol' => $_POST['estadoRol']
+                        'id' => $_POST['id'],
+                        'roles' => $_POST['roles']
                     );
 
                     $rolesUsuariosDao = new RolesUsuariosDAO();
@@ -43,7 +41,7 @@
                         header("location:" . SERVERURL . "rolesUsuarios/asignarRolesUsuarios/okAsignacion");
                     }
                     else {
-                        header("location:" . SERVERURL . "rolesUsuarios/asignarRolesUsuarios/errAsignacion");
+                        header("location:" . SERVERURL . "rolesUsuarios/asignarRolesUsuarios/errAsignacion/".$respuesta);
                     }
                 }
 

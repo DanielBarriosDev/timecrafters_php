@@ -10,8 +10,14 @@ $rolesControlador = new RolesControlador();
 
 
 if (isset($_GET['action'])) {
+    
     $action = explode("/", $_GET['action']);
     $lista = $usuariosControlador->listarUsuariosByIdControlador($action[2]);
+}
+
+if(isset($_POST['enviar'])){
+    $rolesUsuarioControlador = new RolesUsuariosControlador();
+    $rolesUsuarioControlador->registrarRolesUsuariosControlador();
 }
 
 ?>
@@ -77,14 +83,14 @@ if (isset($_GET['action'])) {
                     <div class="col-md-6">
                         <div class="mb-2 d-flex flex-column align-items-start">
                             <label for="fechaAsignacion" class="form-label">Fecha Asignación:</label>
-                            <input type="date" class="form-control" name="fechaAsignacion" id="fechaAsignacion">
+                            <input type="datetime-local" class="form-control" name="fechaAsignacion" id="fechaAsignacion">
                         </div>
                     </div>
 
                     <div class="col-md-6">
-                        <div class="mb-2 d-flex flex-column align-items-start">
+                        <div class="mb-2 d-flex flex-column align-items-start "  id='roles-container'> 
                             <label for="fechaCancelacion" class="form-label">Fecha Cancelación:</label>
-                            <input type="date" class="form-control" name="fechaCancelacion" id="fechaCancelacion">
+                            <input type="datetime-local" class="form-control" name="fechaCancelacion" id="fechaCancelacion">
                         </div>
                     </div>
 
@@ -97,14 +103,15 @@ if (isset($_GET['action'])) {
                                     $roles = $rolesControlador -> listarRolesControlador();
 
                                     foreach ($roles as $rol) {
-                                        $checkboxId = "rol_" . $rol['roles_id'];
                                         echo "<div class='form-check'>
-                                                <input type='checkbox' class='form-check-input' id='$checkboxId' name='roles[]' value='" . $rol['roles_id'] . "' aria-label='" . $rol['roles_nombre'] . "'>
+                                                <input type='checkbox' class='form-check-input' id='roles' name='roles[]' value='" . $rol['roles_id'] . "' aria-label='" . $rol['roles_nombre'] . "'>
                                                 <span class='form-check-label'>" . $rol['roles_nombre'] . "</span>
                                             </div>";
                                     }
                                 ?>
                             </div>
+
+                            
                         </div>
                     </div>
 
@@ -133,8 +140,6 @@ if (isset($_GET['action'])) {
         </div>
     </div>
 </div>
-
-
 
 <?php
 if (isset($_GET["action"])) {
