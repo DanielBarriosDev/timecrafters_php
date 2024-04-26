@@ -16,7 +16,7 @@
                 $conexion = new Conexion();
                 $stmt = $conexion -> conectar() -> prepare($sql);
 
-                $stmt -> bindParam("nombreRol", $datos, PDO::PARAM_STR);
+                $stmt -> bindParam(":nombreRol", $datos, PDO::PARAM_STR);
 
                 if ($stmt -> execute()) {
                     $conexion = null;

@@ -6,19 +6,20 @@
 
 $usuariosControlador = new UsuariosControlador();
 $rolesControlador = new RolesControlador();
+$rolesUsuariosControlador = new RolesUsuariosControlador();
+
+$rolesUsuariosControlador -> registrarRolesUsuariosControlador();
 
 
 
 if (isset($_GET['action'])) {
-    
     $action = explode("/", $_GET['action']);
-    $lista = $usuariosControlador->listarUsuariosByIdControlador($action[2]);
+    $lista = $usuariosControlador -> listarUsuariosByIdControlador($action[2]);
 }
 
-if(isset($_POST['enviar'])){
-    $rolesUsuarioControlador = new RolesUsuariosControlador();
-    $rolesUsuarioControlador->registrarRolesUsuariosControlador();
-}
+// if(isset($_POST['enviar'])){
+    
+// }
 
 ?>
 

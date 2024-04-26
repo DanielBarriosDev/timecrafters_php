@@ -11,23 +11,23 @@
             if (isset($_POST['fechaAsignacion']) && isset($_POST['fechaCancelacion']) && 
                 isset($_POST['roles']) && isset($_POST['estadoRol'])) {
 
-                if (!preg_match($patronFecha, $_POST['fechaAsignacion'] )) {
-                    header("location:" . SERVERURL . "usuariosRoles/asignarRolesUsuarios/regFechaAsig");
-                    exit;
-                }
-                else if (!preg_match($patronFecha, $_POST['fechaCancelacion'])) {
-                    header("location:" . SERVERURL . "usuariosRoles/asignarRolesUsuarios/regFechaCan");
-                    exit;
-                }
-                else if (!preg_match($patronNombre, $_POST['roles'])) {
-                    header("location:" . SERVERURL . "usuariosRoles/asignarRolesUsuarios/regRoles");
-                    exit;
-                }
-                else if (!preg_match($patronFecha, $_POST['estadoRol'])) {
-                    header("location:" . SERVERURL . "usuariosRoles/asignarRolesUsuarios/regEstadoRol");
-                    exit;
-                }
-                else {
+                // if (!preg_match($patronFecha, $_POST['fechaAsignacion'] )) {
+                //     header("location:" . SERVERURL . "usuariosRoles/asignarRolesUsuarios/regFechaAsig");
+                //     exit;
+                // }
+                // else if (!preg_match($patronFecha, $_POST['fechaCancelacion'])) {
+                //     header("location:" . SERVERURL . "usuariosRoles/asignarRolesUsuarios/regFechaCan");
+                //     exit;
+                // }
+                // else if (!preg_match($patronNombre, $_POST['roles'])) {
+                //     header("location:" . SERVERURL . "usuariosRoles/asignarRolesUsuarios/regRoles");
+                //     exit;
+                // }
+                // else if (!preg_match($patronFecha, $_POST['estadoRol'])) {
+                //     header("location:" . SERVERURL . "usuariosRoles/asignarRolesUsuarios/regEstadoRol");
+                //     exit;
+                // }
+                // else {
 
                     $datos = array(
                         'id' => $_POST['id'],
@@ -41,9 +41,9 @@
                         header("location:" . SERVERURL . "rolesUsuarios/asignarRolesUsuarios/okAsignacion");
                     }
                     else {
-                        header("location:" . SERVERURL . "rolesUsuarios/asignarRolesUsuarios/errAsignacion/".$respuesta);
+                        header("location:" . SERVERURL . "rolesUsuarios/asignarRolesUsuarios/errAsignacion/");
                     }
-                }
+                // }
 
             }
         }
