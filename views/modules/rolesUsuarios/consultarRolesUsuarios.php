@@ -58,8 +58,8 @@
                         echo "<td>" . $value['roles_usuarios_fecha_cancelacion'] . "</td>";
                         echo "<td>" . $value['roles_nombre'] . "</td>";
                         echo "<td>" . $value['roles_usuarios_estado'] . "</td>";
-                        echo "<td><center><a href='" . SERVERURL . "usuarios/editarUsuarios/" . $value['roles_usuarios_id'] . "'><i class='bi bi-pencil'></i></a></center></td>";
-                        echo "<td><center><a href='" . SERVERURL . "usuarios/eliminar/" . $value['roles_usuarios_id'] . "' onclick='return eliminarUsuarios(event);'><i class='bi bi-trash3'></i></a></center></td>";
+                        echo "<td><center><a href='" . SERVERURL . "rolesUsuarios/editarRolesUsuarios/" . $value['roles_usuarios_id'] . "'><i class='bi bi-pencil'></i></a></center></td>";
+                        echo "<td><center><a href='" . SERVERURL . "rolesUsuarios/eliminar/" . $value['roles_usuarios_id'] . "' onclick='return eliminarUsuarios(event);'><i class='bi bi-trash3'></i></a></center></td>";
                         echo "</tr>";
                     }
                     ?>

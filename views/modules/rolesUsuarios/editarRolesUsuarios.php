@@ -1,22 +1,19 @@
 <?php
-// if (!isset($_SESSION['user'])) {
-//     header("location:ingresar");
-//     exit();
-// }
+    $rolesUsuariosControlador = new RolesUsuariosControlador();
 
-$usuariosControlador = new UsuariosControlador();
-$rolesControlador = new RolesControlador();
-$rolesUsuariosControlador = new RolesUsuariosControlador();
+    if (isset($_POST['enviar'])) {
+        // $rolesUsuariosControlador -> actualizarRolesUsuariosControlador();
+    }
 
-$rolesUsuariosControlador -> registrarRolesUsuariosControlador();
+    if (isset($_POST['action'])) {
+        $action =  explode("/", $_GET['action']);
+        $lista = $rolesUsuariosControlador -> listarRolesUsuariosByIdControlador($action[2]);
+    }
 
-
-if (isset($_GET['action'])) {
-    $action = explode("/", $_GET['action']);
-    $lista = $usuariosControlador -> listarUsuariosByIdControlador($action[2]);
-}
 
 ?>
+
+
 
 <div class="card text-center container">
     <div class="card-header">
@@ -36,7 +33,7 @@ if (isset($_GET['action'])) {
                 <div class="row">
                     <div class="col-md-6">
                         <div class="mb-2 d-flex flex-column align-items-start">
-                            <input type="hidden" name="id" value="<?php echo $lista['usuarios_id'] ?>">
+                            <input type="hidden" name="id" value="<?php echo $lista['u.usuarios_id'] ?>">
                             <label for="nombres" class="form-label">Nombres:</label>
                             <input type="text" class="form-control nombres" name="nombres" id="nombres" value="<?php echo $lista['usuarios_nombres'] . ' ' . $lista['usuarios_apellidos'] ?>" disabled>
                         </div>
@@ -76,11 +73,18 @@ if (isset($_GET['action'])) {
                         </div>
                     </div>
 
+                    <div class="col-md-6">
+                        <div class="mb-2 d-flex flex-column align-items-start "  id='roles-container'> 
+                            <label for="fechaCancelacion" class="form-label">Fecha Cancelación:</label>
+                            <input type="datetime-local" class="form-control" name="fechaCancelacion" id="fechaCancelacion">
+                        </div>
+                    </div>
+
                     <div class="col-md-12">
                         <div class="mb-2 d-flex flex-column align-items-start">
                             <label for="roles" class="form-label">Roles:</label>
                             <div id="roles-container">
-                                <?php
+                                <!-- <?php
 
                                     $roles = $rolesControlador -> listarRolesControlador();
 
@@ -90,8 +94,10 @@ if (isset($_GET['action'])) {
                                                 <span class='form-check-label'>" . $rol['roles_nombre'] . "</span>
                                             </div>";
                                     }
-                                ?>
+                                ?> -->
                             </div>
+
+                            
                         </div>
                     </div>
 
@@ -132,14 +138,6 @@ if (isset($_GET["action"])) {
 
             case "errAsignacion":
                 $msg = "Rol NO Asignado";
-                break;
-
-            case "regRoles":
-                $msg = "Acceso denegado Rol de Usuario";
-                break;
-
-            case "regEstadoRol": 
-                $msg = "Acceso denegado Estado del Rol";
                 break;
 
             default:

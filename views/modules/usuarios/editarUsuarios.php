@@ -6,7 +6,7 @@
 
     $usuariosControlador = new UsuariosControlador();
     if (isset($_POST['enviar'])) {
-        $usuariosControlador->actualizarUsuarioControlador();
+        $usuariosControlador -> actualizarUsuarioControlador();
     }
 
     if (isset($_GET['action'])) {

@@ -118,7 +118,7 @@
 
         public function listarUsuariosByIdModelo($id) {
             $sql = "SELECT usuarios_id,  usuarios_nombres, usuarios_apellidos, usuarios_tipo_identificacion, usuarios_identificacion, usuarios_correo, usuarios_estado, usuarios_ciudades_id 
-            from usuarios where usuarios_id = :id";
+            FROM usuarios WHERE usuarios_id = :id";
 
             try {
                 $conexion = new Conexion();
