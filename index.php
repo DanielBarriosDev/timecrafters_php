@@ -29,4 +29,17 @@
     $controlador = new Controlador();
     $controlador -> cargarTemplate();
 
+    // if (!isset($_SESSION['usuario'])) {
+    //     // Mostrar la página de login si no ha iniciado sesión
+    //     include_once 'views/modules/login.php';
+    // } else {
+    //     // Cargar el template con todas las vistas si ha iniciado sesión
+    //     $controlador->cargarTemplate();
+    // }
+
+    
+
+
+    
+
 ?>

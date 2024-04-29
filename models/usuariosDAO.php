@@ -183,8 +183,8 @@
 
         public function eliminarUsuariosModelo($id) {
 
-            $sql1 = "SELECT count(*) as valor from usuarios";
-            $sql2 = "DELETE from usuarios where usuarios_id = :id";
+            $sql1 = "SELECT count(*) as valor FROM usuarios";
+            $sql2 = "DELETE FROM usuarios WHERE usuarios_id = :id";
 
             try {
                 $conexion = new Conexion;

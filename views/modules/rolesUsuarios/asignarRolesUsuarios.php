@@ -8,12 +8,12 @@ $usuariosControlador = new UsuariosControlador();
 $rolesControlador = new RolesControlador();
 $rolesUsuariosControlador = new RolesUsuariosControlador();
 
-$rolesUsuariosControlador -> registrarRolesUsuariosControlador();
+$rolesUsuariosControlador->registrarRolesUsuariosControlador();
 
 
 if (isset($_GET['action'])) {
     $action = explode("/", $_GET['action']);
-    $lista = $usuariosControlador -> listarUsuariosByIdControlador($action[2]);
+    $lista = $usuariosControlador->listarUsuariosByIdControlador($action[2]);
 }
 
 ?>
@@ -82,14 +82,14 @@ if (isset($_GET['action'])) {
                             <div id="roles-container">
                                 <?php
 
-                                    $roles = $rolesControlador -> listarRolesControlador();
+                                $roles = $rolesControlador->listarRolesControlador();
 
-                                    foreach ($roles as $rol) {
-                                        echo "<div class='form-check'>
-                                                <input type='checkbox' class='form-check-input' id='roles' name='roles[]' value='" . $rol['roles_id'] . "' aria-label='" . $rol['roles_nombre'] . "'>
+                                foreach ($roles as $rol) {
+                                    echo "<div class='form-check'>
+                                                <input type='checkbox' class='form-check-input' id='roles' name='roles[]' value='" . $rol['roles_id'] . "'>
                                                 <span class='form-check-label'>" . $rol['roles_nombre'] . "</span>
                                             </div>";
-                                    }
+                                }
                                 ?>
                             </div>
                         </div>
@@ -115,37 +115,35 @@ if (isset($_GET['action'])) {
                     </div>
                 </div>
                 <input type="submit" name="enviar" value="Asignar Roles">
-
             </form>
+            <?php
+                if (isset($_GET["action"])) {
+                    $action = explode("/", $_GET['action']);
+                    if (count($action) == 4) {
+                        switch ($action[3]) {
+                            case "okAsignacion":
+                                $msg = "Rol de Usuario Asignado";
+                                break;
+
+                            case "errAsignacion":
+                                $msg = "Rol de Usuario NO Asignado";
+                                break;
+
+                            case "regRoles":
+                                $msg = "Acceso denegado Rol de Usuario";
+                                break;
+
+                            case "regEstadoRol":
+                                $msg = "Acceso denegado Estado del Rol";
+                                break;
+
+                            default:
+                                $msg = "";
+                        }
+                        echo "<center>" . $msg . "</center>";
+                    }
+                }
+            ?>
         </div>
     </div>
 </div>
-
-<?php
-if (isset($_GET["action"])) {
-    $action = explode("/", $_GET['action']);
-    if (count($action) == 4) {
-        switch ($action[3]) {
-            case "okAsignacion":
-                $msg = "Rol Asignado";
-                break;
-
-            case "errAsignacion":
-                $msg = "Rol NO Asignado";
-                break;
-
-            case "regRoles":
-                $msg = "Acceso denegado Rol de Usuario";
-                break;
-
-            case "regEstadoRol": 
-                $msg = "Acceso denegado Estado del Rol";
-                break;
-
-            default:
-                $msg = "";
-        }
-        echo "<center>" . $msg . "</center>";
-    }
-}
-?>

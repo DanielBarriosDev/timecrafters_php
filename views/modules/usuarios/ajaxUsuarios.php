@@ -19,7 +19,7 @@
         }
 
 
-        public function eliminarUsuarios (){
+        public function eliminarUsuarios () {
             $usuariosControlador = new UsuariosControlador();
             $respuesta = $usuariosControlador -> eliminarUsuariosControlador($this -> id);
             print $respuesta;

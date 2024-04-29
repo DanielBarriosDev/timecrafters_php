@@ -12,9 +12,6 @@
             <li class="nav-item">
                 <a class="nav-link active" aria-current="true" href="<?php echo SERVERURL; ?>rolesUsuarios/consultarRolesUsuarios">Consultar roles de Usuarios</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="<?php echo SERVERURL; ?>rolesUsuarios/asignarRolesUsuarios">Asignar Roles </a>
-            </li>
         </ul>
     </div>
     <div class="card">
@@ -59,14 +56,14 @@
                         echo "<td>" . $value['roles_nombre'] . "</td>";
                         echo "<td>" . $value['roles_usuarios_estado'] . "</td>";
                         echo "<td><center><a href='" . SERVERURL . "rolesUsuarios/editarRolesUsuarios/" . $value['roles_usuarios_id'] . "'><i class='bi bi-pencil'></i></a></center></td>";
-                        echo "<td><center><a href='" . SERVERURL . "rolesUsuarios/eliminar/" . $value['roles_usuarios_id'] . "' onclick='return eliminarUsuarios(event);'><i class='bi bi-trash3'></i></a></center></td>";
+                        echo "<td><center><a href='" . SERVERURL . "rolesUsuarios/eliminar/" . $value['roles_usuarios_id'] . "' onclick='return eliminarRolesUsuarios(event);'><i class='bi bi-trash3'></i></a></center></td>";
                         echo "</tr>";
                     }
                     ?>
                 </tbody>
             </table>
         
-            <script src="<?php echo SERVERURL ?>views/js/usuariosJs/eliminarUsuarios.js"></script>
+            <script src="<?php echo SERVERURL ?>views/js/rolesUsuariosJs/eliminarRolesUsuarios.js"></script>
 
             <?php
             if (isset($action) && count($action) == 2) {

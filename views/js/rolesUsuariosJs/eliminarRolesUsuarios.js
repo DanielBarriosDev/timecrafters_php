@@ -1,5 +1,5 @@
 
-function eliminarUsuarios(event) {
+function eliminarRolesUsuarios(event) {
 
     event.preventDefault();
     url = event.currentTarget.getAttribute('href');
@@ -8,7 +8,7 @@ function eliminarUsuarios(event) {
     urlArray = url.split("/");
 
     Swal.fire({
-        title: "¿Esta seguro de eliminar este usuario?",
+        title: "¿Esta seguro de eliminar el rol a este usuario?",
         text: "!No podra revertir los cambios!",
         icon: "warning",
         showCancelButton: true,
@@ -24,7 +24,7 @@ function eliminarUsuarios(event) {
             datos.append("ope", operacion);
             datos.append("id", id);
             $.ajax ({
-                url: "http://localhost/timecrafters/views/modules/usuarios/ajaxUsuarios.php",
+                url: "http://localhost/timecrafters/views/modules/rolesUsuarios/ajaxRolesUsuarios.php",
                 method: "POST",
                 data: datos,
                 cache: false,
@@ -36,15 +36,15 @@ function eliminarUsuarios(event) {
                     if (respuesta.trim() == "ok") {
                         Swal.fire({
                             title: "Eliminado!",
-                            text: "Tu Usuario se ha eliminado correctamente",
+                            text: "El Rol a tu Usuario se ha eliminado correctamente",
                             icon: "success"
                         });
                         $(fila).remove();
                     }
                     else {
                         Swal.fire({
-                            title: "!ERROR! Usuario no eliminado",
-                            text: "El Usuario no fue eliminado",
+                            title: "!ERROR! Rol de Usuario no eliminado",
+                            text: "El Rol del Usuario no fue eliminado",
                             icon: "error"
                         }); 
                     }
@@ -54,5 +54,4 @@ function eliminarUsuarios(event) {
     }) 
 
     return false;
-
-}
+}       

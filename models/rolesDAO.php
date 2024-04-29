@@ -33,7 +33,7 @@
         }
 
         public function listarRolesModelo () {
-            $sql = "SELECT roles_id, roles_nombre from roles order by roles_nombre";
+            $sql = "SELECT roles_id, roles_nombre FROM roles ORDER BY roles_nombre";
 
             try {
                 $conexion = new Conexion();
@@ -71,7 +71,7 @@
         }
 
         public function listarRolesByIdModelo ($id) {
-            $sql = "SELECT roles_id, roles_nombre from roles where roles_id = :id";
+            $sql = "SELECT roles_id, roles_nombre FROM roles WHERE roles_id = :id";
 
             try {
                 $conexion = new Conexion();
@@ -90,7 +90,7 @@
         }
 
         public function actualizarRolesModelo ($datos) {
-            $sql = "UPDATE roles set roles_nombre = :nombreRol where roles_id = :id";
+            $sql = "UPDATE roles set roles_nombre = :nombreRol WHERE roles_id = :id";
 
             try {
                 $conexion = new Conexion();
@@ -113,7 +113,7 @@
         }
 
         public function eliminarRolesModelo ($id) {
-            $sql1 = "SELECT count(*) as valor from roles";
+            $sql1 = "SELECT count(*) as valor FROM roles";
             $sql2 = "DELETE FROM roles WHERE roles_id = :id";
             
             try {

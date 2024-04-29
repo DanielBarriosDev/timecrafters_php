@@ -62,6 +62,60 @@
             return $resultado;
         }
 
+        public function actualizarRolesUsuariosControlador () {
+            $patronNombre = '/^[A-Za-zÁáÉéÍíÓóÚúÑñÜü\s]+$/';
+            $patronID = '/^\d+$/';
+
+            if (isset($_POST['id']) && isset($_POST['estadoRol'])) {
+
+                foreach ($_POST['id'] as $rol) {
+                    if (!preg_match($patronID, $rol)) {
+                        header("location:" . SERVERURL . "usuariosRoles/editarRolesUsuarios/regID");
+                        exit;
+                    }
+                }
+                if (!preg_match($patronNombre, $_POST['estadoRol'])) {
+                    header("location:" . SERVERURL . "usuariosRoles/editarRolesUsuarios/regEstadoRol");
+                    exit;
+                }
+                else {
+
+                    $datos = array(
+                        'id' => $_POST['id'],
+                        'estadoRol' => $_POST['estadoRol']
+                    );
+
+                    $rolesUsuariosDao = new RolesUsuariosDAO();
+                    $respuesta = $rolesUsuariosDao -> actualizarRolesUsuariosModelo($datos, 'roles_usuarios');
+
+                    if ($respuesta == "success") {
+                        header("location:" . SERVERURL . "rolesUsuarios/editarRolesUsuarios/" . $_POST['id'] . "/okUp");
+                    }
+                    else {
+                        header("location:" . SERVERURL . "rolesUsuarios/editarRolesUsuarios/" . $_POST['id'] . "/erUp");
+                    }
+                }
+
+            }
+        }
+
+        public function eliminarRolesUsuariosControlador ($id) {
+
+            if (isset($id)) {
+                $rolesUsuariosDao = new RolesUsuariosDAO();
+                $respuesta = $rolesUsuariosDao -> eliminarRolesUsuariosModelo($id);
+
+                return $respuesta;
+
+                if ($respuesta == "success") {
+                    header("location:" . SERVERURL . "rolesUsuarios/consultarRolesUsuarios/okdel");
+                }
+                else {
+                    header("location:" . SERVERURL . "rolesUsuarios/consultarRolesUsuarios/errdel");
+                }
+            }
+        }
+
     }
 
 ?>

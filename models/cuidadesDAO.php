@@ -32,7 +32,7 @@
         }
 
         public function listarCiudadesModelo () {
-            $sql = "SELECT ciudades_id, ciudades_nombre from ciudades order by ciudades_nombre";
+            $sql = "SELECT ciudades_id, ciudades_nombre FROM ciudades ORDER BY ciudades_nombre";
 
             try {
                 $conexion = new Conexion();
@@ -70,7 +70,7 @@
         }
 
         public function listarCiudadesByIdModelo ($id) {
-            $sql = "SELECT ciudades_id, ciudades_nombre from ciudades where ciudades_id = :id";
+            $sql = "SELECT ciudades_id, ciudades_nombre FROM ciudades WHERE ciudades_id = :id";
 
             try {
                 $conexion = new Conexion();
@@ -113,7 +113,7 @@
         }
 
         public function eliminarCiudadesModelo($id) {
-            $sql1 = "SELECT count(*) as valor from ciudades";
+            $sql1 = "SELECT count(*) as valor FROM ciudades";
             $sql2 = "DELETE FROM ciudades WHERE ciudades_id = :id";
 
 
