@@ -1,5 +1,7 @@
 <?php
 
+use FTP\Connection;
+
     if(!file_exists("config/conexion.php")){
         require_once '../../../config/conexion.php';
     }
