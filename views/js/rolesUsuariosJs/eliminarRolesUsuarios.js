@@ -3,7 +3,7 @@ function eliminarRolesUsuarios(event) {
 
     event.preventDefault();
     url = event.currentTarget.getAttribute('href');
-    alert(url);
+    // alert(url);
 
     urlArray = url.split("/");
 

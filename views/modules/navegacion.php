@@ -35,13 +35,13 @@
           <span class="nav_ocultar">Roles de Usuario</span>
         </a>
       </li>
-      <!-- <li>
-        <a href="gestionCompetencias.html" class="nav-link link-body-emphasis">
+      <li>
+        <a href="<?php echo SERVERURL;?>login/login" class="nav-link link-body-emphasis">
           <i class="bi bi-journal-bookmark me-2"></i>
-          <span class="nav_ocultar">Competencias</span>
+          <span class="nav_ocultar">Login</span>
         </a>
       </li>
-      <li>
+      <!-- <li>
         <a href="gestionResultados.html" class="nav-link link-body-emphasis">
           <i class="bi bi-check2-circle me-2"></i>
           <span class="nav_ocultar">Resultados</span>
@@ -52,8 +52,8 @@
           <i class="bi bi-person-lines-fill me-2"></i>
           <span class="nav_ocultar">Profesiones</span>
         </a>
-      </li>
-    </ul> --> 
+      </li> -->
+    </ul> 
     <hr>
     <div class="dropdown">
       <a href="#" class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle"

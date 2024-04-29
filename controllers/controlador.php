@@ -5,6 +5,7 @@
 
         function cargarTemplate () {
             include 'views/template.php';
+            // include 'views/login.php';
         }
 
         public function enlacesPaginasControlador() {

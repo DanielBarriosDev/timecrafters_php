@@ -86,7 +86,7 @@ document.getElementById("formularioUsuarios").addEventListener("submit",  functi
     // me falta ciudaes
 
     $(this).submit();
-    alert("llegue");
+    // alert("llegue");
 
 });
 
