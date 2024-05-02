@@ -30,13 +30,13 @@
 
 
     $controlador = new Controlador();
-    // $controlador -> cargarTemplate();
+    $controlador -> cargarTemplate();
 
-    if (!isset($_SESSION['usuario'])) {
-        include_once 'views/modules/login.php';
-    } else {
-        $controlador -> cargarTemplate();
-    }
+    // if (!isset($_SESSION['usuario'])) {
+    //     include_once 'views/modules/login.php';
+    // } else {
+    //     $controlador -> cargarTemplate();
+    // }
 
 
 ?>

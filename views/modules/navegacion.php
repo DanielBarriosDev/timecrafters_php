@@ -36,7 +36,7 @@
         </a>
       </li>
       <li>
-        <a href="<?php echo SERVERURL;?>login/login" class="nav-link link-body-emphasis">
+        <a href="<?php echo SERVERURL;?>login/consultarLogin" class="nav-link link-body-emphasis">
           <i class="bi bi-journal-bookmark me-2"></i>
           <span class="nav_ocultar">Login</span>
         </a>
