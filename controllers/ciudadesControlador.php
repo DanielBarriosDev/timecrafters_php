@@ -1,4 +1,7 @@
 <?php
+
+    ob_start();
+
     class CiudadesControlador {
 
         public function registrarCiudadesControlador () {

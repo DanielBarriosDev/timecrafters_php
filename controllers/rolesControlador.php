@@ -1,5 +1,7 @@
 <?php
+
     ob_start();
+
     class RolesControlador {
 
         public function registarRolesControlador () {
