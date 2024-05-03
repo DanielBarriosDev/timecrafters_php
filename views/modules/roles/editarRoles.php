@@ -2,12 +2,12 @@
 $rolesControlador = new RolesControlador();
 
 if (isset($_POST['enviar'])) {
-    $rolesControlador->actualizarRolesControlador();
+    $rolesControlador -> actualizarRolesControlador();
 }
 
 if (isset($_GET['action'])) {
     $action = explode("/", $_GET['action']);
-    $lista = $rolesControlador->listarRolesByIdControlador($action[2]);
+    $lista = $rolesControlador -> listarRolesByIdControlador($action[2]);
 }
 
 ?>

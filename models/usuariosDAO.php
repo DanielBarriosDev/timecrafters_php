@@ -69,8 +69,8 @@
 
                 return $stmt -> fetchAll();
 
-                $conexion = null;
-                $stmt = null;
+                // $conexion = null;
+                // $stmt = null;
             } catch (\Throwable $th) {
                 echo $th  -> getTraceAsString();
             }

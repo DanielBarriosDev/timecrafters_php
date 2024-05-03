@@ -31,8 +31,8 @@
             <!-- <h1 class="gradient-text">TimeCrafters</h1> -->
 
             <div class="form-floating">
-                <input type="text" class="form-control" id="identificacion" placeholder="" required>
-                <label for="identificacion">Usuario</label>
+                <input type="text" class="form-control" id="usuario" placeholder="" required>
+                <label for="usuario">Usuario</label>
             </div>
             <div class="form-floating">
                 <input type="password" class="form-control" id="password" placeholder="" required>

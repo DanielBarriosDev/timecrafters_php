@@ -35,7 +35,7 @@
                     <?php
 
                     $rolesControlador = new RolesControlador();
-                    $datos = $rolesControlador->listarRolesControlador();
+                    $datos = $rolesControlador -> listarRolesControlador();
 
                     foreach ($datos as $value) {
                         echo "<tr id='fila" . $value['roles_id'] . "'>";

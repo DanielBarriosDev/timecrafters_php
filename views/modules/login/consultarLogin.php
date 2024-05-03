@@ -5,7 +5,7 @@
                 <a class="nav-link active" aria-current="true" href="<?php echo SERVERURL; ?>login/consultarLogin">Consultar Usuarios</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<?php echo SERVERURL; ?>login/registrarUsuarios">Crear Usuario</a>
+                <a class="nav-link" href="<?php echo SERVERURL; ?>login/generarContrasenas">Crear Usuario</a>
             </li>
         </ul>
     </div>
@@ -47,14 +47,14 @@
                         echo "<td>" . $value['login_password'] . "</td>";
                         echo "<td>" . $value['login_intentos'] . "</td>";
                         echo "<td><center><a href='" . SERVERURL . "login/editarLogin/" . $value['login_id'] . "'><i class='bi bi-pencil'></i></a></center></td>";
-                        echo "<td><center><a href='" . SERVERURL . "login/eliminar/" . $value['login_id'] . "' onclick='return eliminarUsuarios(event);'><i class='bi bi-trash3'></i></a></center></td>";
+                        echo "<td><center><a href='" . SERVERURL . "login/eliminar/" . $value['login_id'] . "' onclick='return eliminarLogin(event);'><i class='bi bi-trash3'></i></a></center></td>";
                         echo "</tr>";
                     }
                     ?>
                 </tbody>
             </table>
         
-            <script src="<?php echo SERVERURL ?>views/js/usuariosJs/eliminarUsuarios.js"></script>
+            <script src="<?php echo SERVERURL ?>views/js/loginJs/eliminarLogin.js"></script>
 
             <?php
             if (isset($action) && count($action) == 2) {
