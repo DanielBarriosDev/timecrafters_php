@@ -30,7 +30,6 @@
                         <th>Contraseña</th>
                         <th>Intentos</th>
                         <th></th>
-                        <th></th>
                     </tr>
                     
                 </thead>
@@ -46,7 +45,7 @@
                         echo "<td>" . $value['usuarios_identificacion'] . "</td>";
                         echo "<td>" . $value['login_password'] . "</td>";
                         echo "<td>" . $value['login_intentos'] . "</td>";
-                        echo "<td><center><a href='" . SERVERURL . "login/editarLogin/" . $value['login_id'] . "'><i class='bi bi-pencil'></i></a></center></td>";
+                        // echo "<td><center><a href='" . SERVERURL . "login/editarLogin/" . $value['login_id'] . "'><i class='bi bi-pencil'></i></a></center></td>";
                         echo "<td><center><a href='" . SERVERURL . "login/eliminar/" . $value['login_id'] . "' onclick='return eliminarLogin(event);'><i class='bi bi-trash3'></i></a></center></td>";
                         echo "</tr>";
                     }

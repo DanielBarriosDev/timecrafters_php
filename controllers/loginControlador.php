@@ -18,6 +18,16 @@
                     exit;
                 } else {
 
+                    $datos = array(
+                        'usuario' => $_POST['usuario'],
+                        'password' => $_POST['password']
+                    );
+
+                    $loginDao = new LoginDAO();
+                    $respuesta = $loginDao -> ingresarLoginModelo($datos);
+
+                    
+
 
                     
                 }

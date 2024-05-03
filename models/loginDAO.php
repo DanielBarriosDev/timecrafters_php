@@ -8,6 +8,33 @@
     }
 
     class LoginDAO extends Conexion {
+
+        public function ingresarLoginModelo ($datos) {
+
+            $sql = "SELECT l.login_password,
+                            l.login_intentos,
+                            u.usuarios_identificacion
+                    FROM login l
+                    INNER JOIN usuarios u ON l.login_usuarios_id = u.usuarios_id
+                    WHERE u.usuario_identificacion = ':usuario'";
+
+            try {
+                $conexion = new Conexion();
+                $stmt = $conexion -> conectar() -> prepare($sql);
+                $stmt -> bindParam(":usuario", $datos['usuario'], PDO::PARAM_STR);
+                
+
+                if ($stmt -> execute()) {
+                    return $stmt -> fetch();
+                    $conexion = null;
+                    $stmt = null;
+                } else {
+                    return "error";
+                }
+            } catch (\Throwable $th) {
+                echo $th  -> getTraceAsString();
+            }
+        }
         
     
         public function registrarPasswordModelo($usuariosId, $passwordEncriptada) {
