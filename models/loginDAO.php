@@ -9,10 +9,6 @@
 
     class LoginDAO extends Conexion {
         
-        public function generarPasswordDefectoModelo ($usuariosId) {
-            $password = substr(str_shuffle(str_repeat('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#*.', 16)), 0, 16);
-            return $password;
-        }
     
         public function registrarPasswordModelo($usuariosId, $passwordEncriptada) {
 

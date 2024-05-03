@@ -10,25 +10,30 @@
         public function generarPasswordDefectoControlador() {
             $loginDao = new LoginDAO();
             $usuariosDao = new UsuariosDAO();
+            $loginControlador = new LoginControlador();
             $respuesta = $usuariosDao -> listarUsuariosModelo();
-    
-            if (!empty($respuesta)) { 
-                foreach ($respuesta as $usuario) {
-                    $usuariosId = $usuario['usuarios_id'];
-        
-                    $passwordDefecto = $loginDao -> generarPasswordDefectoModelo($usuariosId);
-                    $passwordEncriptada = password_hash($passwordDefecto, PASSWORD_DEFAULT);
-        
-                    $resultado = $loginDao -> registrarPasswordModelo($usuariosId, $passwordEncriptada);
-                    if ($resultado === "success") {
-                        echo "Contraseña generada con éxito para el usuario con ID: $usuariosId<br>";
-                    } else {
-                        echo "Error al generar contraseña para el usuario con ID: $usuariosId<br>";
-                    }
-                }
+          
+            if (!empty($respuesta)) {
+              for ($i = 0; $i < count($respuesta); $i++) {
+                $usuario = $respuesta[$i];
+                $usuariosId = $usuario['usuarios_id'];
+
+                
+                $passwordDefecto = $loginControlador -> generarPasswordControlador();
+                $passwordEncriptada = password_hash($passwordDefecto, PASSWORD_DEFAULT);
+          
+                $resultado = $loginDao -> registrarPasswordModelo($usuariosId, $passwordEncriptada);
+          
+                // ... (resto del código para el manejo de éxito/error)
+              }
             } else {
-                echo "No hay usuarios para generar contraseñas.";
+              // ... (mensaje de no se encontraron usuarios)
             }
+        }
+        
+        function generarPasswordControlador() {
+            $password = substr(str_shuffle(str_repeat('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#*.', 16)), 0, 16);
+            return $password;
         }
 
 
