@@ -1,5 +1,14 @@
 <?php
+
   include_once 'php/config.php';
+
+  session_start();
+
+  if (!isset($_SESSION['validado'])) {
+    header("location: views/modules/login.php");
+    exit();
+  }
+
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +36,7 @@
 
   <?php
     include('views/modules/navegacion.php');
-    // include('views/modules/login/login.php');
+    // include('../views/modules/login/login.php');
   ?>
 
   <?php

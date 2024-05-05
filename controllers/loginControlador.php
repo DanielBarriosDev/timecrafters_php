@@ -11,10 +11,10 @@
                 $patronPassword = '/^[a-zA-Z0-9@#*.]{8,16}$/';
 
                 if (!preg_match($patronIdentificacion, $_POST['usuario'])) {
-                    header("location:" . SERVERURL . "login/ErrUsuario");
+                    header("location:" . SERVERURL . "ErrUsuario");
                     exit;
                 } else if (!preg_match($patronPassword, $_POST['password'])) {
-                    header("location:" . SERVERURL . "login/ErrPassword");
+                    header("location:" . SERVERURL . "ErrPassword");
                     exit;
                 } else {
 
@@ -26,17 +26,31 @@
                     $loginDao = new LoginDAO();
                     $respuesta = $loginDao -> ingresarLoginModelo($datos);
 
-                    
+                    $id = $respuesta['login_id'];
+                    $intentos = $respuesta['login_intentos'];
 
 
-                    
+                    if ($intentos < 5) {
+                        if (password_verify($datos['password'], $respuesta['login_password'])) {
+                            session_start();
+                            $_SESSION['validado'] = true;
+
+                            $loginDao -> actualizarIntentosLoginModelo(0, $id);
+                            header("location:views/template.php");
+                            // header("location:" . SERVERURL . "inicio");
+                            // header("location:template.php");
+                        }
+                        else {
+                            $loginDao -> actualizarIntentosLoginModelo($intentos + 1, $id);
+                            header("location:" . SERVERURL . "error");
+                        }
+                    } else {
+                        header("location:" . SERVERURL . "errorIntentos");
+                    }
                 }
-
-
-
-
             }
         }
+
 
         public function generarPasswordDefectoControlador() {
             $loginDao = new LoginDAO();

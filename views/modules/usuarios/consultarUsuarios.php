@@ -1,8 +1,9 @@
 <?php
-// if (!isset($_SESSION['user'])) {
-//     header("location:ingresar");
-//     exit();
-// }
+
+    if (!isset($_SESSION['validado'])) {
+        header("location: views/modules/login.php"); 
+        exit();
+    }
 
 ?>
 
@@ -71,21 +72,21 @@
             <script src="<?php echo SERVERURL ?>views/js/usuariosJs/eliminarUsuarios.js"></script>
 
             <?php
-            if (isset($action) && count($action) == 2) {
-                switch ($action[1]) {
-                    case "okdel":
-                        $msg = "Usuario eliminado correctamente";
-                        break;
+                if (isset($action) && count($action) == 2) {
+                    switch ($action[1]) {
+                        case "okdel":
+                            $msg = "Usuario eliminado correctamente";
+                            break;
 
-                    case "erdel":
-                        $msg = "Error al eliminar un usuario";
-                        break;
+                        case "erdel":
+                            $msg = "Error al eliminar un usuario";
+                            break;
 
-                    default:
-                        $msg = "";
+                        default:
+                            $msg = "";
+                    }
+                    echo "<center>" . $msg . "</center>";
                 }
-                echo "<center>" . $msg . "</center>";
-            }
             ?>
         </div>
 

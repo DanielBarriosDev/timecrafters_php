@@ -1,18 +1,21 @@
 <?php
-$rolesControlador = new RolesControlador();
-$rolesUsuariosControlador = new RolesUsuariosControlador();
 
-if (isset($_POST['enviar'])) {
-    $rolesUsuariosControlador->actualizarRolesUsuariosControlador();
-}
+    if (!isset($_SESSION['validado'])) {
+        header("location: views/modules/login.php"); 
+        exit();
+    }
 
-if (isset($_GET['action'])) {
-    $action =  explode("/", $_GET['action']);
-    $lista = $rolesUsuariosControlador->listarRolesUsuariosByIdControlador($action[2]);
-}
+    $rolesControlador = new RolesControlador();
+    $rolesUsuariosControlador = new RolesUsuariosControlador();
 
+    if (isset($_POST['enviar'])) {
+        $rolesUsuariosControlador -> actualizarRolesUsuariosControlador();
+    }
 
-
+    if (isset($_GET['action'])) {
+        $action =  explode("/", $_GET['action']);
+        $lista = $rolesUsuariosControlador -> listarRolesUsuariosByIdControlador($action[2]);
+    }
 
 ?>
 

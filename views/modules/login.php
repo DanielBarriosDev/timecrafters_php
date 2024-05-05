@@ -1,5 +1,12 @@
 <?php
-  include_once 'php/config.php';
+
+    include_once 'php/config.php';
+
+    if (isset($_POST['usuario']) && isset($_POST['password'])) {
+        $loginControlador = new LoginControlador();
+        $loginControlador -> ingresarLoginControlador();
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -31,11 +38,11 @@
             <!-- <h1 class="gradient-text">TimeCrafters</h1> -->
 
             <div class="form-floating">
-                <input type="text" class="form-control" id="usuario" placeholder="" required>
+                <input type="text" class="form-control" id="usuario" name="usuario" placeholder="" required>
                 <label for="usuario">Usuario</label>
             </div>
             <div class="form-floating">
-                <input type="password" class="form-control" id="password" placeholder="" required>
+                <input type="password" class="form-control" id="password" name="password" placeholder="" required>
                 <label for="password">Contraseña</label>
             </div>
 
@@ -46,10 +53,40 @@
                 </label>
             </div>
             <button class="btn custom-btn-color w-100 py-2" type="submit">Iniciar sesión</button>
+            <!-- <input type="submit" name="enviar" value="Iniciar sesión"> -->
+
             <div class="form-check text-start my-3">
                 <span class="mt-5 mb-3 text-body-secondary">© 2024 TimeCrafters. Todos los derechos reservados.</span>
             </div>
         </form>
+
+        <?php 
+
+            if (isset($action) && count($action) == 2) {
+                switch ($action[1]) {
+                    case "error":
+                        $msg = "Usuario no registrado";
+                        break;
+
+                    case "ErrUsuario":
+                        $msg = "Error al ingresar el Usuario<br>Digite su identificación";
+                        break;
+                    
+                    case "ErrPassword":
+                        $msg = "Error al ingresar la Contraseña<br>La contraseña debe contener al menos un número y una letra mayúscula y minúscula, y al menos 8 o más caracteres";
+                        break;
+        
+                    case "errorIntentos":
+                        $msg = "Ha superado el numero de intentos fallidos<br>Consulte a su administrador";
+                        break;
+                    
+                    default:
+                        $msg = "";
+                }
+                echo "<center>" . $msg . "</center>";
+            }
+
+        ?>
     </main>   
 
 

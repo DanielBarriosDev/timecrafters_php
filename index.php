@@ -14,7 +14,7 @@
 
     require_once 'models/enlacesPaginasModelo.php';
     require_once 'models/usuariosDAO.php';
-    require_once 'models/cuidadesDAO.php';
+    require_once 'models/ciudadesDAO.php';
     require_once 'models/rolesDAO.php';
     require_once 'models/rolesUsuariosDAO.php';
     require_once 'models/loginDAO.php';
@@ -32,11 +32,12 @@
     $controlador = new Controlador();
     $controlador -> cargarTemplate();
 
-    // if (!isset($_SESSION['usuario'])) {
+    // if (!isset($_SESSION['validado'])) {
     //     include_once 'views/modules/login.php';
     // } else {
     //     $controlador -> cargarTemplate();
     // }
+    
 
 
 ?>

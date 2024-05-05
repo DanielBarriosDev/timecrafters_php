@@ -1,9 +1,14 @@
 <?php
+
+    if (!isset($_SESSION['validado'])) {
+        header("location: views/modules/login.php"); 
+        exit();
+    }
+
     $usuariosControlador = new UsuariosControlador();
     $usuariosControlador -> registrarUsuariosControlador();
    
 ?>
-<!-- <h1>REGISTRAR USUARIOS</h1> -->
 
 <div class="card text-center container">
     <div class="card-header">

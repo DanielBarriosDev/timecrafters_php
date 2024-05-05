@@ -11,12 +11,13 @@
 
         public function ingresarLoginModelo ($datos) {
 
-            $sql = "SELECT l.login_password,
-                            l.login_intentos,
+            $sql = "SELECT l.login_id, 
+                            l.login_password, 
+                            l.login_intentos, 
                             u.usuarios_identificacion
                     FROM login l
                     INNER JOIN usuarios u ON l.login_usuarios_id = u.usuarios_id
-                    WHERE u.usuario_identificacion = ':usuario'";
+                    WHERE u.usuarios_identificacion = :usuario";
 
             try {
                 $conexion = new Conexion();
@@ -35,6 +36,30 @@
                 echo $th  -> getTraceAsString();
             }
         }
+
+        public function actualizarIntentosLoginModelo ($intentos, $id) {
+
+            $sql = "UPDATE login set login_intentos = :intentos WHERE login_id = :id";
+
+            try {
+                $conexion = new Conexion();
+                $stmt = $conexion -> conectar() -> prepare($sql);
+
+                $stmt -> bindParam(":intentos", $intentos, PDO::PARAM_STR);
+                $stmt -> bindParam(":id", $id, PDO::PARAM_INT);
+
+                if ($stmt -> execute()) {
+                    return "success";
+                    $conexion = null;
+                    $stmt = null;
+                } else {
+                    return "error";
+                }
+
+            } catch (\Throwable $th) {
+                echo $th  -> getTraceAsString();
+            }
+        }
         
     
         public function registrarPasswordModelo($usuariosId, $passwordEncriptada) {
@@ -45,8 +70,8 @@
                 $conexion = new Conexion();
                 $stmt = $conexion -> conectar() -> prepare($sql);
 
-                $stmt->bindParam(':passwordEncriptada', $passwordEncriptada, PDO::PARAM_STR);
-                $stmt->bindParam(':usuariosId', $usuariosId, PDO::PARAM_INT);
+                $stmt -> bindParam(':passwordEncriptada', $passwordEncriptada, PDO::PARAM_STR);
+                $stmt -> bindParam(':usuariosId', $usuariosId, PDO::PARAM_INT);
         
                 if ($stmt -> execute()) {
                     $conexion = null;
@@ -58,7 +83,6 @@
 
             } catch (\Throwable $th) {
                 echo $th  -> getTraceAsString();
-
             }
         }
 

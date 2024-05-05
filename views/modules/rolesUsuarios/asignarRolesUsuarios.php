@@ -1,20 +1,20 @@
 <?php
-// if (!isset($_SESSION['user'])) {
-//     header("location:ingresar");
-//     exit();
-// }
 
-$usuariosControlador = new UsuariosControlador();
-$rolesControlador = new RolesControlador();
-$rolesUsuariosControlador = new RolesUsuariosControlador();
+    if (!isset($_SESSION['validado'])) {
+        header("location: views/modules/login.php"); 
+        exit();
+    }
 
-$rolesUsuariosControlador->registrarRolesUsuariosControlador();
+    $usuariosControlador = new UsuariosControlador();
+    $rolesControlador = new RolesControlador();
+    $rolesUsuariosControlador = new RolesUsuariosControlador();
 
+    $rolesUsuariosControlador -> registrarRolesUsuariosControlador();
 
-if (isset($_GET['action'])) {
-    $action = explode("/", $_GET['action']);
-    $lista = $usuariosControlador->listarUsuariosByIdControlador($action[2]);
-}
+    if (isset($_GET['action'])) {
+        $action = explode("/", $_GET['action']);
+        $lista = $usuariosControlador -> listarUsuariosByIdControlador($action[2]);
+    }
 
 ?>
 

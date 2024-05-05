@@ -1,5 +1,11 @@
-<!-- <h1>Consultar Ciudades</h1> -->
-
+<?php
+    
+    if (!isset($_SESSION['validado'])) {
+        header("location:views/modules/login.php"); 
+        exit();
+    }
+     
+?>
 <div class="card text-center container">
     <div class="card-header">
         <ul class="nav nav-tabs card-header-tabs">
@@ -35,7 +41,7 @@
                     <?php
 
                     $ciudadesControlador = new CiudadesControlador();
-                    $datos = $ciudadesControlador->listarCiudadesControlador();
+                    $datos = $ciudadesControlador -> listarCiudadesControlador();
 
                     foreach ($datos as $key => $value) {
                         echo "<tr id='fila" . $value['ciudades_id'] . "'>";

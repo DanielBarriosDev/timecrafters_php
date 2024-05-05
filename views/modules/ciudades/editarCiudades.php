@@ -1,14 +1,20 @@
 <?php
-$ciudadesControlador = new CiudadesControlador();
 
-if (isset($_POST['enviar'])) {
-    $ciudadesControlador->actualizarCiudadesControlador();
-}
+    if (!isset($_SESSION['validado'])) {
+        header("location: views/modules/login.php"); 
+        exit();
+    }
+     
+    $ciudadesControlador = new CiudadesControlador();
 
-if (isset($_GET['action'])) {
-    $action = explode("/", $_GET['action']);
-    $lista = $ciudadesControlador->listarCiudadesByIdControlador($action[2]);
-}
+    if (isset($_POST['enviar'])) {
+        $ciudadesControlador -> actualizarCiudadesControlador();
+    }
+
+    if (isset($_GET['action'])) {
+        $action = explode("/", $_GET['action']);
+        $lista = $ciudadesControlador -> listarCiudadesByIdControlador($action[2]);
+    }
 
 ?>
 

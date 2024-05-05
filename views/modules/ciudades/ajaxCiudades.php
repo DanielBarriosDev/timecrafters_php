@@ -1,6 +1,6 @@
 <?php
     include_once '../../../controllers/ciudadesControlador.php';
-    include_once '../../../models/cuidadesDAO.php';
+    include_once '../../../models/ciudadesDAO.php';
 
     class AjaxCiudades {
         public $url;

@@ -1,6 +1,12 @@
 <?php
-$ciudadesControlador = new CiudadesControlador();
-$ciudadesControlador->registrarCiudadesControlador();
+
+    if (!isset($_SESSION['validado'])) {
+        header("location: views/modules/login.php"); 
+        exit();
+    }
+
+    $ciudadesControlador = new CiudadesControlador();
+    $ciudadesControlador -> registrarCiudadesControlador();
 
 ?>
 
