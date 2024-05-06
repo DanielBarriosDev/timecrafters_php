@@ -36,7 +36,7 @@
                             $_SESSION['validado'] = true;
 
                             $loginDao -> actualizarIntentosLoginModelo(0, $id);
-                            header("location:views/template.php");
+                            header("location:dashboard");
                             // header("location:" . SERVERURL . "inicio");
                             // header("location:template.php");
                         }

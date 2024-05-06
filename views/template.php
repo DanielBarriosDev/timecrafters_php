@@ -2,12 +2,12 @@
 
   include_once '../php/config.php';
 
-  // session_start();
+  session_start();
 
-  // if (!isset($_SESSION['validado'])) {
-  //   header("location: views/modules/login.php");
-  //   exit();
-  // }
+  if (!isset($_SESSION['validado'])) {
+    header("location: views/modules/login.php");
+    exit();
+  }
 
 ?>
 
@@ -41,8 +41,8 @@
 
   <?php
 
-    $controlador = new Controlador();
-    $controlador -> enlacesPaginasControlador();
+    $controlador = new Controladord();
+    $controlador -> enlacesPaginasControladord();
 
   ?>
 

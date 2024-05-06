@@ -32,11 +32,23 @@
     $controlador = new Controlador();
     // $controlador -> cargarTemplate();
 
-    if (!isset($_SESSION['validado'])) {
-        include_once 'views/modules/login.php';
+    if (isset($_SESSION['validado'])) {
+      // include_once 'views/modules/login.php';
+      include_once 'views/template.php';
     } else {
-        $controlador -> cargarTemplate();
+      $controlador -> cargarTemplate();
     }
+
+  //   if (!isset($_SESSION['validado'])) {
+  //     // Llamar al controlador de login
+  //     include_once 'views/modules/login.php';
+
+  //     $loginControlador = new LoginControlador();
+  //     $loginControlador -> ingresarLoginControlador();
+  // } else {
+  //     // Cargar el template.php
+  //     include 'views/template.php';
+  // }
     
 
 

@@ -78,7 +78,7 @@
       <li>
         <hr class="dropdown-divider">
       </li>
-      <li><a class="dropdown-item" href="index.html">Cerrar sesión</a></li>
+      <li><a class="dropdown-item" href="<?php echo SERVERURL; ?>salir">Cerrar sesión</a></li>
     </ul>
   </div>
 </nav>
