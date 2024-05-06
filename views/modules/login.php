@@ -56,7 +56,8 @@
             <!-- <input type="submit" name="enviar" value="Iniciar sesión"> -->
 
             <div class="form-check text-start my-3">
-                <span class="mt-5 mb-3 text-body-secondary">© 2024 TimeCrafters. Todos los derechos reservados.</span>
+                <span class="mt-5 mb-3 text-body-secondary"><a href="<?php SERVERURL?>salir">¿Olvidaste tu contraseña?</a></span>
+                <!-- <span class="mt-5 mb-3 text-body-secondary">© 2024 TimeCrafters. Todos los derechos reservados.</span> -->
             </div>
         </form>
 
