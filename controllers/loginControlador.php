@@ -36,14 +36,18 @@
                             $_SESSION['validado'] = true;
 
                             $loginDao -> actualizarIntentosLoginModelo(0, $id);
-                            header("location:" . SERVERURL . "dashboard");
+                            // header("location:" . SERVERURL . "dashboard");
+                            header("location:views/template.php");
+                            exit();
                         }
                         else {
                             $loginDao -> actualizarIntentosLoginModelo($intentos + 1, $id);
                             header("location:" . SERVERURL . "error");
+                            exit();
                         }
                     } else {
                         header("location:" . SERVERURL . "errorIntentos");
+                        exit();
                     }
                 }
             }

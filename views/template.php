@@ -1,13 +1,16 @@
 <?php
 
-  include_once 'php/config.php';
+  include_once '../php/config.php';
+  // include_once 'php/config.php';
+  // require_once '../controllers/controlador.php';
+  // require_once '../models/enlacesPaginasModelo.php';
 
   session_start();
 
-  // if (!isset($_SESSION['validado'])) {
-  //   header("location: views/modules/login.php");
-  //   exit();
-  // }
+  if (!isset($_SESSION['validado'])) {
+    header("location: views/modules/login.php");
+    exit();
+  }
 
 ?>
 
@@ -35,8 +38,8 @@
 <body>
 
   <?php
-    include('views/modules/navegacion.php');
-    // include('../views/modules/login/login.php');
+    // include('views/modules/navegacion.php');
+    include('../views/modules/navegacion.php');
   ?>
 
   <?php
