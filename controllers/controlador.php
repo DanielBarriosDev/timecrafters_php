@@ -26,32 +26,31 @@
             // echo $respuesta; 
             include ($respuesta);
         }
+
+        // function cargarTemplate () {
+        //     include 'views/template.php';
+        // }
+    
+        // public function enlacesPaginasControlador() {
+        //     if (isset($_SESSION['validado'])) {
+        //         header("Location:" . SERVERURL ."dashboard");
+        //         exit();
+        //     }
+    
+        //     if ($_SERVER['REQUEST_URI'] === '/timecrafters/') {
+        //         include 'views/modules/login.php';
+        //         exit();
+        //     }
+    
+        //     if (isset($_GET["action"])) {
+        //     }
+        //     else {
+        //     }
+    
+        //     $enlacesPaginasModelo = new EnlacesPaginasModelo();
+        //     $respuesta = $enlacesPaginasModelo->enlacesPaginas($enlace);
+        //     include ($respuesta);
+        // }
     }
 
-    class Controladord {
-
-        function cargarTemplate () {
-            include 'views/template.php';
-            // include 'views/modules/template.php';
-        }
-
-        public function enlacesPaginasControladord() {
-            if (isset($_GET["action"])) {
-                if (isset($enlace) && count($enlace) > 1) {
-                    unset ($enlace);
-                }
-                $enlace = explode("/", $_GET["action"]);
-            }
-            else {
-                $enlace[0] = "dashboard";
-                // $enlace[1] = "";
-            }
-            
-            
-            $enlacesPaginasModelo = new EnlacesPaginasModelo();
-            $respuesta = $enlacesPaginasModelo -> enlacesPaginas($enlace);
-            // echo $respuesta; 
-            include ($respuesta);
-        }
-    }
 ?>

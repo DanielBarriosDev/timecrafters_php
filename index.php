@@ -39,17 +39,7 @@
       $controlador -> cargarTemplate();
     }
 
-  //   if (!isset($_SESSION['validado'])) {
-  //     // Llamar al controlador de login
-  //     include_once 'views/modules/login.php';
 
-  //     $loginControlador = new LoginControlador();
-  //     $loginControlador -> ingresarLoginControlador();
-  // } else {
-  //     // Cargar el template.php
-  //     include 'views/template.php';
-  // }
-    
 
 
 ?>
