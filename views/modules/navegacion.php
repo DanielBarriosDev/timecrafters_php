@@ -68,7 +68,7 @@
   </ul>
   <hr>
   <div class="dropdown">
-    <a href="#" class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+    <a href="" class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
       <!-- <img src="https://cdn.icon-icons.com/icons2/2645/PNG/512/person_circle_icon_159926.png" alt="" width="32"
           height="32" class="rounded-circle me-2">-->
       <strong>mdo</strong>

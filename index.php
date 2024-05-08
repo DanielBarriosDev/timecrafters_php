@@ -1,7 +1,5 @@
 <?php
 
-// session_start();
-
     // Controladores
 
     require_once 'controllers/controlador.php';
@@ -32,24 +30,14 @@
 
 
     $controlador = new Controlador();
-    // $controlador -> cargarTemplate();
+    $controlador -> cargarTemplate();
 
-    if (isset($_SESSION['validado'])) {
-      // include_once 'views/modules/login.php';
-      print "views/template.php";
-      include_once 'views/template.php';
-    } else {
-      print "Entro al else";
-      $controlador -> cargarTemplate();
-    }
+    // if (!isset($_SESSION['validado'])) {
+    //     include_once 'views/modules/login.php';
+    // } else {
+    //     $controlador -> cargarTemplate();
+    // }
 
-
-    // if (isset($_SESSION['validado']) && $_SESSION['validado'] == true) {
-      // include_once 'views/template.php';
-  // } else {
-      // Si no, cargar el template a través de la función cargarTemplate()
-      // $controlador->cargarTemplate();
-  // }
 
 
 

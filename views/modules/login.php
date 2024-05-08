@@ -8,7 +8,7 @@
     }
 
 ?>
-
+<!-- login -->
 <!DOCTYPE html>
 <html lang="es">
 
@@ -65,19 +65,20 @@
 
             if (isset($action) && count($action) == 2) {
                 switch ($action[1]) {
-                    case "error":
-                        $msg = "Usuario no registrado";
-                        break;
-
-                    case "ErrUsuario":
+                    
+                    case "UsuarioInvalido":
                         $msg = "Error al ingresar el Usuario<br>Digite su identificación";
                         break;
-                    
-                    case "ErrPassword":
+                        
+                    case "PasswordInvalida":
                         $msg = "Error al ingresar la Contraseña<br>La contraseña debe contener al menos un número y una letra mayúscula y minúscula, y al menos 8 o más caracteres";
                         break;
-        
-                    case "errorIntentos":
+
+                    case "PasswordIncorrecta":
+                        $msg = "Contraseña Incorrecta";
+                        break;
+                            
+                    case "IntentosExcedidos":
                         $msg = "Ha superado el numero de intentos fallidos<br>Consulte a su administrador";
                         break;
                     

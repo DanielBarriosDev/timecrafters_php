@@ -8,13 +8,13 @@
             if (isset($_POST['usuario']) && isset($_POST['password'])){
                 
                 $patronIdentificacion = '/^[0-9]{5,12}$/';
-                $patronPassword = '/^[a-zA-Z0-9@#*.]{8,16}$/';
+                $patronPassword = '/^[a-zA-Z0-9@#*.]{8,20}$/';
 
                 if (!preg_match($patronIdentificacion, $_POST['usuario'])) {
-                    header("location:" . SERVERURL . "ErrUsuario");
+                    header("location:" . SERVERURL . "UsuarioInvalido");
                     exit;
                 } else if (!preg_match($patronPassword, $_POST['password'])) {
-                    header("location:" . SERVERURL . "ErrPassword");
+                    header("location:" . SERVERURL . "PasswordInvalida");
                     exit;
                 } else {
 
@@ -36,17 +36,17 @@
                             $_SESSION['validado'] = true;
 
                             $loginDao -> actualizarIntentosLoginModelo(0, $id);
-                            // header("location:" . SERVERURL . "dashboard");
-                            header("location:views/template.php");
+                            header("location:" . SERVERURL . "dashboard");
+                            // header("location:views/template.php");
                             exit();
                         }
                         else {
                             $loginDao -> actualizarIntentosLoginModelo($intentos + 1, $id);
-                            header("location:" . SERVERURL . "error");
+                            header("location:" . SERVERURL . "PasswordIncorrecta");
                             exit();
                         }
                     } else {
-                        header("location:" . SERVERURL . "errorIntentos");
+                        header("location:" . SERVERURL . "IntentosExcedidos");
                         exit();
                     }
                 }
