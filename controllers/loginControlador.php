@@ -36,8 +36,8 @@
                             $_SESSION['validado'] = true;
 
                             $loginDao -> actualizarIntentosLoginModelo(0, $id);
-                            header("location:" . SERVERURL . "dashboard");
-                            // header("location:views/template.php");
+                            // header("location:" . SERVERURL . "dashboard");
+                            $this -> cargarDashboard();
                             exit();
                         }
                         else {
@@ -50,6 +50,19 @@
                         exit();
                     }
                 }
+            }
+        }
+
+        public function cargarDashboard() {
+            // include 'views/dashboard.php';
+
+            if (!isset($_SESSION['validado']) || $_SESSION['validado'] !== true) {
+                // Si el usuario no está logueado, redirigir al login
+                header("Location: " . SERVERURL);
+                exit();
+            } else {
+                // Si el usuario está logueado, cargar el dashboard
+                include 'views/dashboard.php';
             }
         }
 

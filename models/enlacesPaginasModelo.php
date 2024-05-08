@@ -14,7 +14,7 @@
             }
 
             if ($enlace[0] === 'dashboard') {
-                return 'views/template.php';
+                return 'views/dashboard.php';
             } else {
                 return $modulo;
             }

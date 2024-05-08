@@ -4,17 +4,7 @@
     class Controlador {
 
         function cargarTemplate () {
-
-            // if (!isset($_SESSION['validado'])) {
-            //     include('views/modules/login.php');
-            // } else {
-            //     include('views/template.php');
-            // }
-
-
-
-            include 'views/dashboard.php';
-            // include 'views/modules/login.php';
+            include 'views/modules/login.php';
         }
 
         public function enlacesPaginasControlador() {
@@ -25,8 +15,8 @@
                 $enlace = explode("/", $_GET["action"]);
             }
             else {
-                $enlace[0] = "login";
-                $enlace[1] = "home";
+                $enlace[0] = "";
+                $enlace[1] = "inicio";
             }
             
             

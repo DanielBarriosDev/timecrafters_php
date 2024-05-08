@@ -3,11 +3,8 @@
   include_once 'php/config.php';
   // include_once 'php/config.php';
 
-  // session_start();
-
-  // if (!isset($_SESSION['validado'])) {
-  //   header("location: views/modules/login.php");
-
+  // if (!isset($_SESSION['validado']) || $_SESSION['validado'] !== true) {
+  //   header("Location: " . SERVERURL);
   //   exit();
   // }
 
