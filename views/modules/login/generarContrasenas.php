@@ -1,11 +1,5 @@
 <?php
 
-    // if (!isset($_SESSION['validado'])) {
-    //     header("location: views/modules/login.php"); 
-    //     exit();
-    // }
-    
-
     // Incluir los archivos necesarios
     require_once 'controllers/loginControlador.php';
 

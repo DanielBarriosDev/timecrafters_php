@@ -1,10 +1,5 @@
 <?php
 
-    // if (!isset($_SESSION['validado'])) {
-    //     header("location: views/modules/login.php"); 
-    //     exit();
-    // }
-
     $usuariosControlador = new UsuariosControlador();
     $rolesControlador = new RolesControlador();
     $rolesUsuariosControlador = new RolesUsuariosControlador();

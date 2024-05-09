@@ -1,15 +1,11 @@
+
 <?php
 
-  // session_start();
+  // include_once('controllers/loginControlador.php');
 
-  // if (!isset($_SESSION['validado'])) {
-  //   header("location: views/modules/login.php");
-  //   exit();
-  // }
+  // validarSesion();
 
 ?>
-
-
 <nav class="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary" style="width: 280px; height: 100vh;">
   <a href="" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
     <img src="<?php echo SERVERURL; ?>views/img/logo.svg" alt="" class="me-2" style="width: 60px; height: 60px;">

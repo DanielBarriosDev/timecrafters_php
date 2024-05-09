@@ -1,12 +1,9 @@
 <?php
 
-  include_once 'php/config.php';
-  // include_once 'php/config.php';
+include_once 'php/config.php';
+  // include_once 'controllers/loginControlador.php';
 
-  // if (!isset($_SESSION['validado']) || $_SESSION['validado'] !== true) {
-  //   header("Location: " . SERVERURL);
-  //   exit();
-  // }
+  // validarSesion();
 
 ?>
 <!-- template -->

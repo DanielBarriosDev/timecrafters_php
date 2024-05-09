@@ -1,10 +1,5 @@
 <?php
 
-    // if (!isset($_SESSION['validado'])) {
-    //     header("location: views/modules/login.php"); 
-    //     exit();
-    // }
-
     $rolesControlador = new RolesControlador();
     $rolesUsuariosControlador = new RolesUsuariosControlador();
 
@@ -18,8 +13,6 @@
     }
 
 ?>
-
-
 
 <div class="card text-center container">
     <div class="card-header">

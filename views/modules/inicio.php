@@ -1,11 +1,10 @@
 <?php
 
-    if (!isset($_SESSION['validado']) || $_SESSION['validado'] !== true) {
-        header("Location: " . SERVERURL);
-        exit();
-    }
-    
-?>
+include_once 'php/config.php';
+//   include_once('controllers/loginControlador.php');
 
+//   validarSesion();
+
+?>
 
 <h1>Pagina de inicio</h1>

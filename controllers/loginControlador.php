@@ -66,6 +66,17 @@
             }
         }
 
+        public function validarSesion() {
+            if (session_status() === PHP_SESSION_NONE) {
+              session_start();
+            }
+        
+            if (!isset($_SESSION['validado']) || $_SESSION['validado'] !== true) {
+              header("Location: " . SERVERURL);
+              exit();
+            }
+        }
+
 
         public function generarPasswordDefectoControlador() {
             $loginDao = new LoginDAO();

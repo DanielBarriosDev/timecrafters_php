@@ -4,7 +4,8 @@
     class Controlador {
 
         function cargarTemplate () {
-            include 'views/modules/login.php';
+            // include 'views/modules/login.php';
+            include 'views/dashboard.php';
         }
 
         public function enlacesPaginasControlador() {

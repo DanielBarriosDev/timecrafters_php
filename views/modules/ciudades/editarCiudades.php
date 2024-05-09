@@ -1,10 +1,5 @@
 <?php
 
-    // if (!isset($_SESSION['validado'])) {
-    //     header("location: views/modules/login.php"); 
-    //     exit();
-    // }
-     
     $ciudadesControlador = new CiudadesControlador();
 
     if (isset($_POST['enviar'])) {
@@ -17,8 +12,6 @@
     }
 
 ?>
-
-<!-- <h1>Editar Ciudades</h1> -->
 
 <div class="card text-center container">
     <div class="card-header">

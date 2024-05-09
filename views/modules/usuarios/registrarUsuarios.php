@@ -1,9 +1,17 @@
 <?php
 
-    // if (!isset($_SESSION['validado'])) {
-    //     header("location: views/modules/login.php"); 
+    // function validarSesion() {
+    //     if (session_status() === PHP_SESSION_NONE) {
+    //     session_start();
+    //     }
+
+    //     if (!isset($_SESSION['validado']) || $_SESSION['validado'] !== true) {
+    //     header("Location: " . SERVERURL);
     //     exit();
+    //     }
     // }
+
+    // validarSesion();
 
     $usuariosControlador = new UsuariosControlador();
     $usuariosControlador -> registrarUsuariosControlador();

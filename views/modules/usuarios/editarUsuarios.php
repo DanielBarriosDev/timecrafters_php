@@ -1,10 +1,10 @@
 <?php
-    
-    // if (!isset($_SESSION['validado'])) {
-    //     header("location: views/modules/login.php"); 
-    //     exit();
-    // }
 
+    // include_once('controllers/loginControlador.php');
+    
+    // validarSesion();
+
+    
     $usuariosControlador = new UsuariosControlador();
     if (isset($_POST['enviar'])) {
         $usuariosControlador -> actualizarUsuarioControlador();

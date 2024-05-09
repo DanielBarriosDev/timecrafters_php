@@ -1,9 +1,7 @@
 <?php
+//   include_once('controllers/loginControlador.php');
 
-    // if (!isset($_SESSION['validado'])) {
-    //     header("location: views/modules/login.php"); 
-    //     exit();
-    // }
+//   validarSesion();
 
 ?>
 

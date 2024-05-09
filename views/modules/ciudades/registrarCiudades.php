@@ -1,16 +1,9 @@
 <?php
 
-    // if (!isset($_SESSION['validado'])) {
-    //     header("location: views/modules/login.php"); 
-    //     exit();
-    // }
-
     $ciudadesControlador = new CiudadesControlador();
     $ciudadesControlador -> registrarCiudadesControlador();
 
 ?>
-
-<!-- <h1>Registar Ciudades</h1> -->
 
 <div class="card text-center container">
     <div class="card-header">

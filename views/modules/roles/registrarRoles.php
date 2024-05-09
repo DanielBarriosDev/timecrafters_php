@@ -1,12 +1,8 @@
 <?php
 
-    // if (!isset($_SESSION['validado'])) {
-    //     header("location: views/modules/login.php"); 
-    //     exit();
-    // }
-
     $rolesControlador = new RolesControlador();
     $rolesControlador -> registarRolesControlador();
+    
 ?>
 
 <div class="card text-center container">
