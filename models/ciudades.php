@@ -23,7 +23,7 @@
             $this -> ciudadesId = $ciudadesId;
         }
 
-        public function setCiudadesNombre($ciudadesNombre) {
+        public function setCiudadesNombre ($ciudadesNombre) {
             $this -> ciudadesNombre = $ciudadesNombre;
         }
 

@@ -15,8 +15,20 @@
         public function registrarUsuariosModelo($datos) {
             
             $sql = "INSERT into usuarios
-                    (usuarios_nombres, usuarios_apellidos, usuarios_tipo_identificacion, usuarios_identificacion, usuarios_correo, usuarios_estado, usuarios_ciudades_id)
-                    values (:nombres, :apellidos, :tipoIdentificacion, :identificacion, :correo, :estado, :ciudades)";
+                                (usuarios_nombres, 
+                                usuarios_apellidos, 
+                                usuarios_tipo_identificacion, 
+                                usuarios_identificacion, 
+                                usuarios_correo, 
+                                usuarios_estado, 
+                                usuarios_ciudades_id)
+                    values (:nombres, 
+                            :apellidos, 
+                            :tipoIdentificacion, 
+                            :identificacion, 
+                            :correo, 
+                            :estado, 
+                            :ciudades)";
 
             try {
                 $conexion = new Conexion();
@@ -82,19 +94,19 @@
 
         public function listarUsuariosBusquedaModelo($busqueda) {
             $sql = "SELECT u.usuarios_id,
-                u.usuarios_nombres,
-                u.usuarios_apellidos,
-                u.usuarios_tipo_identificacion,
-                u.usuarios_identificacion,
-                u.usuarios_correo,
-                u.usuarios_estado,
-                c.ciudades_nombre
-            FROM usuarios u
-            INNER JOIN ciudades c ON u.usuarios_ciudades_id = c.ciudades_id
-            WHERE u.usuarios_nombres LIKE '%$busqueda%'
-                OR u.usuarios_apellidos LIKE '%$busqueda%'
-                OR u.usuarios_identificacion LIKE '%$busqueda%'
-            ORDER BY u.usuarios_nombres";
+                            u.usuarios_nombres,
+                            u.usuarios_apellidos,
+                            u.usuarios_tipo_identificacion,
+                            u.usuarios_identificacion,
+                            u.usuarios_correo,
+                            u.usuarios_estado,
+                            c.ciudades_nombre
+                    FROM usuarios u
+                    INNER JOIN ciudades c ON u.usuarios_ciudades_id = c.ciudades_id
+                    WHERE u.usuarios_nombres LIKE '%$busqueda%'
+                        OR u.usuarios_apellidos LIKE '%$busqueda%'
+                        OR u.usuarios_identificacion LIKE '%$busqueda%'
+                    ORDER BY u.usuarios_nombres";
 
             // like es un operador que compara cadenas de texo en una consulta
 
@@ -117,8 +129,16 @@
         ////////////////////////////////////////
 
         public function listarUsuariosByIdModelo($id) {
-            $sql = "SELECT usuarios_id,  usuarios_nombres, usuarios_apellidos, usuarios_tipo_identificacion, usuarios_identificacion, usuarios_correo, usuarios_estado, usuarios_ciudades_id 
-            FROM usuarios WHERE usuarios_id = :id";
+            $sql = "SELECT usuarios_id,  
+                            usuarios_nombres, 
+                            usuarios_apellidos, 
+                            usuarios_tipo_identificacion, 
+                            usuarios_identificacion, 
+                            usuarios_correo, 
+                            usuarios_estado, 
+                            usuarios_ciudades_id 
+                    FROM usuarios 
+                    WHERE usuarios_id = :id";
 
             try {
                 $conexion = new Conexion();
@@ -147,7 +167,6 @@
                                         usuarios_correo = :correo, 
                                         usuarios_estado = :estado, 
                                         usuarios_ciudades_id = :ciudades 
-                    
                     WHERE usuarios_id = :id";
  
 

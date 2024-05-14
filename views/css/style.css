@@ -158,3 +158,29 @@ body {
     display: none;
 }
 
+
+.custom-btn-color {
+  background-color: var(--bg-color-button);
+  border-color: var(--bg-color-button);
+  color: var(--bg-color-text);
+}
+
+.custom-btn-color-alt {
+  background-color: #e7eee6;
+  border-color: #e7eee6;
+  color: #000;
+}
+
+
+/* .custom-btn-color:hover {
+  background-color: var(--bs-success-border-subtle);
+  color: var(--bg-color-text);
+} */
+
+a {
+  /* padding: 10px; */
+  /* margin: 10px; */
+  text-decoration: none;
+  /* background-color: #2f9ce4; */
+  /* color: #000; */
+}

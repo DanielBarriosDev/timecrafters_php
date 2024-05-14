@@ -33,6 +33,22 @@
                 <input type="text" class="form-control" name="nombreCiudad" id="nombreCiudad" value="<?php echo $lista['ciudades_nombre'] ?>" required>
             </div>
 
+            <div class="mb-2 d-flex flex-column align-items-start">
+                <label for="departamentos" class="form-label">Ciudad:</label>
+                <select class="form-select" name="departamentos" id="departamentos" required>
+                    <?php
+                        $departamentosControlador = new DepartamentosControlador();
+                        
+                        $datos = $departamentosControlador -> listarDepartamentosControlador();
+
+                        foreach ($datos as $departamentos) {
+                            $selected = ($lista['ciudades_departamentos_id'] == $departamentos['departamentos_id']) ? 'selected' : '';
+                            echo "<option value='" . $departamentos['departamentos_id'] . "' $selected>" . $departamentos['departamentos_nombre'] . "</option>";
+                        }
+                    ?>                               
+                </select>
+            </div>
+
             <input type="submit" name="enviar" value="Guardar ciudad">
 
             <!-- <button type="submit">Guardar ciudad</button> -->

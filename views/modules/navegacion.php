@@ -33,20 +33,38 @@
     </li>
     <li>
       <a href="<?php echo SERVERURL; ?>roles/consultarRoles" class="nav-link link-body-emphasis">
-        <i class="bi bi-clipboard-check me-2"></i>
+        <i class="bi bi-ui-checks me-2"></i>
         <span class="nav_ocultar">Roles</span>
       </a>
     </li>
     <li>
       <a href="<?php echo SERVERURL; ?>rolesUsuarios/consultarRolesUsuarios" class="nav-link">
-        <i class="bi bi-mortarboard me-2"></i>
+        <i class="bi bi-person-gear me-2"></i>
         <span class="nav_ocultar">Roles de Usuario</span>
       </a>
     </li>
     <li>
       <a href="<?php echo SERVERURL; ?>login/consultarLogin" class="nav-link link-body-emphasis">
-        <i class="bi bi-journal-bookmark me-2"></i>
+        <i class="bi bi-key me-2"></i>
         <span class="nav_ocultar">Login</span>
+      </a>
+    </li>
+    <li>
+      <a href="<?php echo SERVERURL; ?>departamentos/consultarDepartamentos" class="nav-link link-body-emphasis">
+        <i class="bi bi-globe me-2"></i>
+        <span class="nav_ocultar">Departamentos</span>
+      </a>
+    </li>
+    <li>
+      <a href="<?php echo SERVERURL; ?>login/recuperar" class="nav-link link-body-emphasis">
+        <i class="bi bi-globe me-2"></i>
+        <span class="nav_ocultar">Recuperar contraseña</span>
+      </a>
+    </li>
+    <li>
+      <a href="<?php echo SERVERURL; ?>login/correoRestablecer" class="nav-link link-body-emphasis">
+        <i class="bi bi-globe me-2"></i>
+        <span class="nav_ocultar">Correo restablecer</span>
       </a>
     </li>
     <!-- <li>

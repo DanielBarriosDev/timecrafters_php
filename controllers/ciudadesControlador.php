@@ -16,10 +16,13 @@
                 }
                 else {
 
-                    $nombreCiudad = $_POST["nombreCiudad"];
+                    $datos = array(
+                        'nombreCiudad' => $_POST["nombreCiudad"],
+                        'departamentos' => $_POST["departamentos"]
+                    );
 
                     $ciudadesDao = new CiudadesDAO();
-                    $respuesta = $ciudadesDao -> registrarCiudadesModelo($nombreCiudad, 'ciudades');
+                    $respuesta = $ciudadesDao -> registrarCiudadesModelo($datos, 'ciudades');
 
                     if ($respuesta == "success") {
                         header("location:" . SERVERURL . "ciudades/registrarCiudades/okCiudad");
@@ -38,8 +41,7 @@
             if (isset($_POST['busqueda'])) {
                 $busqueda = $_POST['busqueda'];
                 $listado = $ciudadesDao -> listarCiudadesBusquedaModelo($busqueda);
-            }
-            else {
+            } else {
                 $listado = $ciudadesDao -> listarCiudadesModelo();
             }
             return $listado;
@@ -63,6 +65,7 @@
 
                     $datos = array (
                         'nombreCiudad' => $_POST['nombreCiudad'],
+                        'departamentos' => $_POST['departamentos'],
                         'id' => $_POST['id']
                     );
 

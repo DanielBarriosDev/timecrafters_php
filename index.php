@@ -8,6 +8,7 @@
     require_once 'controllers/rolesControlador.php';
     require_once 'controllers/rolesUsuariosControlador.php';
     require_once 'controllers/loginControlador.php';
+    require_once 'controllers/departamentosControlador.php';
 
 
     // Modelos o DAOS
@@ -18,6 +19,7 @@
     require_once 'models/rolesDAO.php';
     require_once 'models/rolesUsuariosDAO.php';
     require_once 'models/loginDAO.php';
+    require_once 'models/departamentosDAO.php';
 
     
     // Clases
@@ -27,6 +29,7 @@
     require_once 'models/roles.php';
     require_once 'models/rolesUsuarios.php';
     require_once 'models/login.php';
+    require_once 'models/departamentos.php';
 
 
     $controlador = new Controlador();
@@ -39,7 +42,7 @@
     // }
 
 
-
+    // require_once 'controllers/correosPHPMailer.php';
 
 
 ?>

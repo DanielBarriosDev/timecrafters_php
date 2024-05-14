@@ -24,11 +24,27 @@
                 <input type="text" class="form-control" name="nombreCiudad" id="nombreCiudad" required>
             </div>
 
-            <input type="submit" name="enviar" value="Guardar ciudad">
+            <div class="mb-2 d-flex flex-column align-items-start">
+                            <label for="departamentos" class="form-label">Departamento:</label>
+                            <select class="form-select" name="departamentos" id="departamentos" required>
+                                <?php
 
-            <!-- <button type="submit">Guardar ciudad</button> -->
+                                    $departamentosControlador = new DepartamentosControlador();
+
+                                    $datos = $departamentosControlador -> listarDepartamentosControlador();
+
+                                    foreach ($datos as $departamentos) {
+                                        echo "<option value='" . $departamentos['departamentos_id'] . "'>" . $departamentos['departamentos_nombre'] . "</option>";
+                                    }
+                                ?>
+                            </select>
+                        </div>
+
+            <!-- <input type="submit" name="enviar" value="Guardar ciudad"> -->
+
+            <button type="submit" name="enviar" >Guardar ciudad</button>
         </form>
-
+        <br>
         <?php
 
         if (isset($_GET['action'])) {

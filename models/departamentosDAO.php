@@ -7,21 +7,20 @@
         require_once 'config/conexion.php';
     }
 
-    class CiudadesDAO extends Conexion {
-
-        public function registrarCiudadesModelo ($datos) {
-            $sql = "INSERT into ciudades (ciudades_nombre, ciudades_departamentos_id) values (:nombreCiudad, :departamentos)";
+    class DepartamentosDAO extends Conexion {
+        
+        public function registrarDepartamentosModelo ($datos) {
+            $sql = "INSERT into departamentos (departamentos_nombre) value (:nombreDepartamento)";
 
             try {
                 $conexion = new Conexion();
                 $stmt = $conexion -> conectar() -> prepare($sql);
 
-                $stmt -> bindParam(":nombreCiudad", $datos['nombreCiudad'], PDO::PARAM_STR);
-                $stmt -> bindParam(":departamentos", $datos['departamentos'], PDO::PARAM_INT);
+                $stmt -> bindParam(":nombreDepartamento", $datos, PDO::PARAM_STR);
 
                 if ($stmt -> execute()) {
                     $conexion = null;
-                    $stmt = null;
+                    $conexion = null;
                     return "success";
                 } else {
                     return "error";
@@ -31,13 +30,29 @@
             }
         }
 
-        public function listarCiudadesModelo () {
-            $sql = "SELECT c.ciudades_id, 
-                            c.ciudades_nombre,
-                            d.departamentos_nombre
-                    FROM ciudades c 
-                    INNER JOIN departamentos d ON c.ciudades_departamentos_id = d.departamentos_id 
-                    ORDER BY c.ciudades_nombre";
+        public function listarDepartamentosModelo () {
+            $sql = "SELECT departamentos_id, departamentos_nombre FROM departamentos ORDER BY departamentos_nombre";
+
+            try {
+                $conexion = new Conexion();
+                $stmt = $conexion -> conectar() -> prepare($sql);
+                $stmt -> execute();
+
+                return $stmt -> fetchAll();
+
+                $conexion= null;
+                $stmt = null;
+
+            } catch (\Throwable $th) {
+                echo $th -> getTraceAsString();
+            }
+        }
+
+        public function listarDepartamentosBusquedaModelo ($busqueda) {
+            $sql = "SELECT departamentos_id, departamentos_nombre
+                    FROM departamentos
+                    WHERE departamentos_nombre LIKE '%$busqueda%'
+                    ORDER BY departamentos_nombre";
 
             try {
                 $conexion = new Conexion();
@@ -54,36 +69,8 @@
             }
         }
 
-        public function listarCiudadesBusquedaModelo ($busqueda) {
-            $sql = "SELECT c.ciudades_id, 
-                            c.ciudades_nombre,
-                            d.departamentos_nombre
-                    FROM ciudades c
-                    INNER JOIN departamentos d ON c.ciudades_departamentos_id = d.departamentos_id 
-                    WHERE c.ciudades_nombre LIKE '%$busqueda%'
-                        OR d.departamentos_nombre LIKE '%$busqueda%'
-                    ORDER BY c.ciudades_nombre";
-
-            try {
-                $conexion = new Conexion();
-                $stmt = $conexion -> conectar() -> prepare($sql);
-                $stmt -> execute();
-
-                return $stmt -> fetchAll();
-
-                $conexion = null;
-                $stmt = null;
-            } catch (\Throwable $th) {
-                echo $th  -> getTraceAsString();
-            }
-        }
-
-        public function listarCiudadesByIdModelo ($id) {
-            $sql = "SELECT ciudades_id, 
-                            ciudades_nombre,
-                            ciudades_departamentos_id
-                    FROM ciudades 
-                    WHERE ciudades_id = :id";
+        public function listarDepartamentosByIdModelo ($id) {
+            $sql = "SELECT departamentos_id, departamentos_nombre FROM departamentos WHERE departamentos_id = :id";
 
             try {
                 $conexion = new Conexion();
@@ -101,18 +88,15 @@
             }
         }
 
-        public function actualizarCiudadesModelo($datos) {
-            $sql = "UPDATE ciudades SET ciudades_nombre = :nombreCiudad,
-                                        ciudades_departamentos_id = :departamentos
-                    WHERE ciudades_id = :id";
+        public function actualizarDepartamentosModelo ($datos) {
+            $sql = "UPDATE departamentos SET departamentos_nombre = :nombreDepartamento WHERE departamentos_id = :id";
 
             try {
                 $conexion = new Conexion();
                 $stmt = $conexion -> conectar() -> prepare($sql);
 
-                $stmt -> bindParam(":nombreCiudad", $datos["nombreCiudad"], PDO::PARAM_STR);
-                $stmt -> bindParam(":departamentos", $datos["departamentos"], PDO::PARAM_INT);
-                $stmt -> bindParam(":id", $datos["id"], PDO::PARAM_INT);
+                $stmt -> bindParam(":nombreDepartamento", $datos["nombreDepartamento"], PDO::PARAM_STR);
+                $stmt -> bindParam("id", $datos["id"], PDO::PARAM_INT);
 
                 if ($stmt -> execute()) {
                     $conexion = null;
@@ -122,24 +106,23 @@
                     return "error";
                 }
             } catch (\Throwable $th) {
-                echo $th->getTraceAsString();
+                echo $th -> getTraceAsString();
             }
         }
 
-        public function eliminarCiudadesModelo($id) {
-            $sql1 = "SELECT count(*) as valor FROM ciudades";
-            $sql2 = "DELETE FROM ciudades WHERE ciudades_id = :id";
-
+        public function eliminarDepartamentosModelo ($id) {
+            $sql1 = "SELECT count(*) as valor FROM departamentos";
+            $sql2 = "DELETE FROM departamentos WHERE departamentos_id = :id";
 
             try {
                 $conexion = new Conexion();
                 $stmt = $conexion -> conectar() -> prepare($sql1);
 
                 if ($stmt -> execute()) {
-                    $ciudades = $stmt -> fetch();
+                    $departamentos = $stmt -> fetch();
                 }
 
-                if ($ciudades['valor'] > 1) {
+                if ($departamentos['valor'] > 1) {
                     try {
                         $stmt = null;
                         $stmt = $conexion -> conectar() -> prepare($sql2);
@@ -157,17 +140,13 @@
                     } catch (\Throwable $th) {
                         //throw $th;
                     }
-                }
-                else {
+                } else {
                     return "error";
                 }
             } catch (\Throwable $th) {
                 echo $th -> getTraceAsString();
             }
         }
-
     }
-
-
 
 ?>

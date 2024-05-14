@@ -10,41 +10,16 @@
     color: #000;
 }
 
+
+.custom-btn-color:hover {
+    background-color: var(--bs-success-border-subtle);
+    color: var(--bg-color-text);
+}
+
 a {
     /* padding: 10px; */
     /* margin: 10px; */
     text-decoration: none;
     /* background-color: #2f9ce4; */
     /* color: #000; */
-}
-
-.gradient-text {
-    background-color: var(--bg-color-button);
-    background-image: linear-gradient(65deg, var(--bg-color-button),  var(--bg-color-button),  #8EA8BF );
-    background-size: 100%;
-    background-repeat: repeat;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    -moz-background-clip: text;
-    -moz-text-fill-color: transparent;
-}
-
-
-body {
-    background-color: #181123;
-}
-
-
-h1 {
-    font-family: "Archivo Black", sans-serif;
-    font-weight: normal;
-    font-size: 4em;
-    text-align: center;
-    margin-bottom: 0;
-    margin-bottom: 50px;
-}
-
-.custom-btn-color:hover {
-    background-color: var(--bs-success-border-subtle);
-    color: var(--bg-color-text);
 }
