@@ -1,3 +1,17 @@
+<?php
+
+var_dump($_SESSION);
+
+
+$loginControlador = new LoginControlador();
+// $loginControlador->validarSesion();
+echo "ID de sesión: " . session_id();
+
+?>
+
+
+
+
 <div class="card text-center container">
     <div class="card-header">
         <ul class="nav nav-tabs card-header-tabs">

@@ -38,7 +38,7 @@
 
         //Content
         $mail -> isHTML(true);                                  //Set email format to HTML
-        $mail -> Subject = '🚀 Prueba de restablecer contraseña TimeCrafters
+        $mail -> Subject = ' Prueba de restablecer contraseña TimeCrafters
         ';
         $mail -> Body    = 'This is the HTML message body <b>in bold!</b>';
 

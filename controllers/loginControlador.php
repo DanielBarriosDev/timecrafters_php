@@ -67,13 +67,28 @@
         }
 
         public function validarSesion() {
+
+            var_dump($_SESSION);
+
+            // Asegurarse de que la sesión esté iniciada
             if (session_status() === PHP_SESSION_NONE) {
-              session_start();
+                session_start();
             }
         
-            if (!isset($_SESSION['validado']) || $_SESSION['validado'] !== true) {
-              header("Location: " . SERVERURL);
-              exit();
+
+
+            // Verificar si la sesión está validada y activa
+            if (!isset($_SESSION['validado']) || !$_SESSION['validado'] || (isset($_SESSION['ultimo_acceso']) && (time() - $_SESSION['ultimo_acceso']) > 1800)) { // 1800 segundos = 30 minutos
+                
+                error_log("Sesión no válida: " . var_export($_SESSION, true)); 
+                // Si la sesión no es válida o ha expirado, destruir la sesión y redirigir al login
+                session_unset();
+                session_destroy();
+                header("Location: " . SERVERURL);
+                exit();
+            } else {
+                // Actualizar el tiempo de último acceso
+                $_SESSION['ultimo_acceso'] = time();
             }
         }
 
