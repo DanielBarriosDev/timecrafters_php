@@ -2,10 +2,10 @@
 
   include_once 'php/config.php';
 
-  $loginControlador = new LoginControlador();
-  $loginControlador -> validarSesion(); // Validar la sesión
+  // $loginControlador = new LoginControlador();
+  // $loginControlador -> validarSesion(); // Validar la sesión
 
-  echo "ID de sesión: " . session_id();
+  // echo "ID de sesión: " . session_id();
 
   // include_once 'controllers/loginControlador.php';
 

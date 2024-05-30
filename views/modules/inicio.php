@@ -5,7 +5,9 @@ include_once 'php/config.php';
 
 //   validarSesion();
 
-echo "ID de sesión: " . session_id();
+// echo "ID de sesión: " . session_id();
+
+gc_collect_cycles();
 
 ?>
 

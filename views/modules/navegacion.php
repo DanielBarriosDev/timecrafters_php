@@ -44,7 +44,7 @@
       </a>
     </li>
     <li>
-      <a href="<?php echo SERVERURL; ?>login/consultarLogin" class="nav-link link-body-emphasis">
+      <a href="<?php echo SERVERURL; ?>auten/consultarLogin" class="nav-link link-body-emphasis">
         <i class="bi bi-key me-2"></i>
         <span class="nav_ocultar">Login</span>
       </a>
@@ -56,13 +56,13 @@
       </a>
     </li>
     <li>
-      <a href="<?php echo SERVERURL; ?>login/recuperar" class="nav-link link-body-emphasis">
+      <a href="<?php echo SERVERURL; ?>auten/recuperar" class="nav-link link-body-emphasis">
         <i class="bi bi-globe me-2"></i>
         <span class="nav_ocultar">Recuperar contraseña</span>
       </a>
     </li>
     <li>
-      <a href="<?php echo SERVERURL; ?>login/correoRestablecer" class="nav-link link-body-emphasis">
+      <a href="<?php echo SERVERURL; ?>auten/correoRestablecer" class="nav-link link-body-emphasis">
         <i class="bi bi-globe me-2"></i>
         <span class="nav_ocultar">Correo restablecer</span>
       </a>

@@ -2,10 +2,10 @@
     <div class="card-header">
         <ul class="nav nav-tabs card-header-tabs">
             <li class="nav-item">
-                <a class="nav-link active" aria-current="true" href="<?php echo SERVERURL; ?>login/consultarLogin">Consultar Usuarios</a>
+                <a class="nav-link active" aria-current="true" href="<?php echo SERVERURL; ?>auten/consultarLogin">Consultar Usuarios</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<?php echo SERVERURL; ?>login/generarContrasenas">Crear Usuario</a>
+                <a class="nav-link" href="<?php echo SERVERURL; ?>auten/generarContrasenas">Crear Usuario</a>
             </li>
         </ul>
     </div>

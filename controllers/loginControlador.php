@@ -36,8 +36,8 @@
                             $_SESSION['validado'] = true;
 
                             $loginDao -> actualizarIntentosLoginModelo(0, $id);
-                            // header("location:" . SERVERURL . "dashboard");
-                            $this -> cargarDashboard();
+                            header("location:" . SERVERURL . "dashboard");
+                            // $this -> cargarDashboard();
                             exit();
                         }
                         else {

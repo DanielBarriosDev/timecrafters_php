@@ -1,23 +1,30 @@
 <?php
+    // Iniciar sesión si aún no lo está
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
 
-    // if(isset($_SESSION['validado'])){
-    //     session_destroy();
-    //     header("location:" . SERVERURL);
-    //     include 'views/modules/login.php';
+    // Verificar si el usuario ha iniciado sesión
+    if (isset($_SESSION['validado']) && $_SESSION['validado'] === true) {
+        // Limpiar todas las variables de sesión
+        $_SESSION = array();
 
-    // }
+        // Si se está usando cookies para la sesión, también borrar la cookie
+        if (ini_get("session.use_cookies")) {
+            $params = session_get_cookie_params();
+            setcookie(session_name(), '', time() - 42000,
+                $params["path"], $params["domain"],
+                $params["secure"], $params["httponly"]
+            );
+        }
 
-    session_start();
-    if (!isset($_SESSION['validado']) || $_SESSION['validado'] !== true) {
-        // Si el usuario no está logueado, redirigir al login
-        header("Location: " . SERVERURL);
-        exit();
-    } else {
-        // Si el usuario está logueado, limpiar la sesión y redirigir al login
-        session_unset(); // Limpiar todas las variables de sesión
-        session_destroy(); // Destruir la sesión
+        // Destruir la sesión
+        session_destroy();
+    }
+
+    // Redirigir al login solo si la sesión ha sido destruida
+    if (session_status() === PHP_SESSION_NONE) { // <-- Condición agregada
         header("Location: " . SERVERURL);
         exit();
     }
-
 ?>

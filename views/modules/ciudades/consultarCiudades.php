@@ -1,11 +1,11 @@
 <?php
 
-var_dump($_SESSION);
+// var_dump($_SESSION);
 
 
 $loginControlador = new LoginControlador();
 // $loginControlador->validarSesion();
-echo "ID de sesión: " . session_id();
+// echo "ID de sesión: " . session_id();
 
 ?>
 

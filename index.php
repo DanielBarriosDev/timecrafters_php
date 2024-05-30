@@ -1,5 +1,7 @@
 <?php
 
+// session_start();
+
     // Controladores
 
     require_once 'controllers/controlador.php';
@@ -33,7 +35,28 @@
 
 
     $controlador = new Controlador();
-    $controlador -> cargarTemplate();
+    // $controlador -> cargarTemplate();
+    
+
+    /*if (isset($_SESSION['validado'])) {
+        $controlador->cargarTemplate('dashboard.php'); // Cargar dashboard si ha iniciado sesión
+    } else {
+        $controlador->cargarTemplate('modules/login.php');  // Cargar login si no ha iniciado sesión
+    }*/
+
+
+    // Redirigir al dashboard si la sesión está activa y la ruta es la raíz
+    if (isset($_SESSION['validado']) && ($_SERVER['REQUEST_URI'] === '/' || $_SERVER['REQUEST_URI'] === '/index.php')) {
+        header("Location: " . SERVERURL . "dashboard");
+        exit;
+    }
+
+    // Verificar si el usuario ha iniciado sesión para cargar la vista correcta
+    if (isset($_SESSION['validado'])) {
+        $controlador->cargarTemplate('dashboard.php'); // Cargar dashboard si ha iniciado sesión
+    } else {
+        $controlador->cargarTemplate('modules/login.php');  // Cargar login si no ha iniciado sesión
+    }
 
     // if (!isset($_SESSION['validado'])) {
     //     include_once 'views/modules/login.php';
@@ -44,5 +67,5 @@
 
     // require_once 'controllers/correosPHPMailer.php';
 
-
+    echo $_SERVER['REQUEST_URI'];
 ?>
