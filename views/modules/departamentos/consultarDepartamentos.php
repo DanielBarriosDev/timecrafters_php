@@ -40,7 +40,7 @@
                         echo "<td>" . $value['departamentos_id'] . "</td>";
                         echo  "<td>" . $value['departamentos_nombre'] . "</td>";
                         echo  "<td><center><a href='" . SERVERURL . "departamentos/editarDepartamentos/" . $value['departamentos_id'] . "'><i class='bi bi-pencil'></i></a></center></td>";
-                        echo  "<td><center><a href='" . SERVERURL . "departamentos/eliminar/" . $value['departamentos_id'] . "' onclick='return eliminarDepartamentos(event);'><i class='bi bi-trash3'></i></a></center></td>";
+                        echo  "";
                         echo "</tr>";
                     }
                     ?>
